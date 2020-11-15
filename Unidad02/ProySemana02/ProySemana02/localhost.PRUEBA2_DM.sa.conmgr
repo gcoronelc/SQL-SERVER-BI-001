@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.PRUEBA2_DM.sa"
+  DTS:DTSID="{9DF0BBEA-5B63-473F-AE71-14F55B949628}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;User ID=sa;Initial Catalog=PRUEBA2_DM;Provider=SQLNCLI11.1;Persist Security Info=True;Auto Translate=False;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAb9jg3V5C1UCjWy1q+Pnv8QAAAAACAAAAAAAQZgAAAAEAACAAAAAEgkaMrmo0ge6aCrH3jRBJZHpXlGO0yAYIPzVwQFhO6AAAAAAOgAAAAAIAACAAAADAcrNU+SK+sS11sMMY27D6LAlcKhVVu+unFUq1SUfELHAAAADqsVOPzUtsKhZh3UsuTRVFP9XHlM3NEOvfWnYkpz0jQF22sYKF/45qaijnTiycwNAd9fO7Q0s2KedFLybk5F+vfAVnMaeEpNOwKxY85hpZfW6idLbb7+SZJAQnxfxUeSGecEWV8xOozx32z4d0Hhi6QAAAAPuRlYWJlkwwXnE9ZnrvLOgugJcs82NXLmPC5THiZxyHaxe+NUiXBlXuktLjQXpQnjJ1sH9odVUR0KPEOze1FNE=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
