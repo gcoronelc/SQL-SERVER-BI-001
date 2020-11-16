@@ -11,8 +11,8 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="9"
-  DTS:VersionGUID="{519C36DC-4D5B-4D88-BBAD-DF1E8A4E86FE}">
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{FCDFAA83-90D2-4A81-A6F0-6343FB54C03D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -868,7 +868,7 @@ public class ScriptMain : UserComponent
     /// <param name="Row">The row that is currently passing through the component</param>
     public override void Entrada0_ProcessInputRow(Entrada0Buffer Row)
     {
-        switch (Row.region[0])
+        switch (Row.region)
         {
             case 1:
                 Row.region2 = "Oriente";
@@ -942,11 +942,11 @@ public class Entrada0Buffer: ScriptBuffer
         }
     }
 
-    public Byte[] region
+    public Decimal region
     {
         get
         {
-            return Buffer.GetBytes(BufferColumnIndexes[2]);
+            return Buffer.GetDecimal(BufferColumnIndexes[2]);
         }
     }
     public bool region_IsNull
@@ -1127,7 +1127,7 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
     <msb:CodeName>SC_5b200d08ac654df98f77d9e0dffd5162</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>SC_5b200d08ac654df98f77d9e0dffd5162</msb:DisplayName>
-    <msb:ProjectId>{D167631D-40FF-40EC-AA98-EEDEFCAB59B5}</msb:ProjectId>
+    <msb:ProjectId>{56AD0150-691E-48EC-95CE-796F89F7CD03}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="SC_5b200d08ac654df98f77d9e0dffd5162.csproj" />
@@ -1274,102 +1274,102 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
                     <arrayElement
                       dataType="System.String"><![CDATA[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
-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
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAPwJsl8AAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAnjMA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-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
+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
-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
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAApBMAAAAgAAAAFAAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
-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
-AFMGlQABAL4gAAAAAIYYjAQGAAIAxiAAAAAAhhiMBB8AAgDRIAAAAACGCBsEmwAFAOYgAAAAAIYI
-RgNHAAUA7yAAAAAAhggmBJsABQAEIQAAAACGCFgDRwAFAA0hAAAAAIYInQOfAAUAIiEAAAAAhgg0
-A0cABQArIQAAAACGCCUAEAAFADUhAAAAAIYIIQOkAAYATCEAAAAAhgBsBkcABwBUIQAAAACGALkF
-RwAHAFwhAAAAAIYYjAQGAAcAfCEAAAAAxgBGBqkABwChIQAAAADGAT0GlQALALQhAAAAAMYBUwaV
-AAwAtiEAAAAAhhiMBLMADQDFIQAAAACGGIwEswAOANQhAAAAAIMYjAQGAA8A3CEAAAAAkwh4BLkA
-DwAIIgAAAACTCK8AvgAPAA8iAAAAAJMIuwDDAA8AFyIAAAAAlgjFBckAEAAeIgAAAACGGIwEBgAQ
-ACYiAAAAAJEYkgTOABAAAAABAHAGAAABAHEEAAACAHEFAAADAEMEAAABALkCAAABALkCAAABADoA
-AAACAH8AAAADAHEEAAAEAEMEAAABAHEEAAABAHAGAAABAPUFAAABAPUFAAABALkCCQCMBAEAEQCM
-BAYAGQCMBAoAKQCMBBAAMQCMBBAAOQCMBBAAQQCMBBAASQCMBBAAUQCMBBAAWQCMBBAAYQCMBBAA
-aQCMBAYAmQCMBAYAuQCMBBUAyQCMBAYAiQCiAgYAiQCtAgYAcQCMBB8AcQBxBCkAcQBxBS0AeQDZ
-AjEAcQBnAzYAeQBoBTsAcQB2A0EAcQBuAwEA0QCMBBAAcQBsBkcAcQC5BUcAiQCMBAYA2QCfBUsA
-iQCFBVIAkQCMBAYA6QBtAFgA6QB0Bl8AoQCMBGQAwQCMBAYALgALAO4ALgATAPcALgAbABYBLgAj
-AB8BLgArAEgBLgAzAEgBLgA7AEgBLgBDAB8BLgBLAE4BLgBTAEgBLgBbAGUBQwBjAK8B4QB7AK8B
-4wBrAK8BKQFzABYBSQFzABYBGwADAAEABwAJAAgACwAAAB8E0gAAAEoD1gAAACoE0gAAAFwD1gAA
-AKED2gAAADgD1gAAACkA0gAAACUD1gAAAHwE3wAAAM8A5AAAAMkF6QACAAYAAwACAAcABQACAAgA
-BwACAAkACQACAAoACwACAAsADQABAAwADwABAA0AEQACABcAEwACABgAFQABABkAFQACABoAFwAE
-gAAAAQAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAAAAAAawBCAAAAAAAPAAAAAAAAAAAAAAB0AP8F
-AAAAAA8AAAAAAAAAAAAAAHQAHAYAAAAABAAAAAAAAAAAAAAAawB/AwAAAAAAAAAAAQAAAN0EAAAA
-AABTQ181YjIwMGQwOGFjNjU0ZGY5OGY3N2Q5ZTBkZmZkNTE2MgBzZXRfcmVnaW9uMgA8TW9kdWxl
-PgBJbnB1dElEAG1zY29ybGliAGRlZmF1bHRJbnN0YW5jZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRU
-eXBlRnJvbUhhbmRsZQBJbnB1dE5hbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUA
-VHlwZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAQXBwbGljYXRpb25T
-ZXR0aW5nc0Jhc2UARWRpdG9yQnJvd3NhYmxlU3RhdGUAQ29tcGlsZXJHZW5lcmF0ZWRBdHRyaWJ1
-dGUARGVidWdnZXJOb25Vc2VyQ29kZUF0dHJpYnV0ZQBEZWJ1Z2dhYmxlQXR0cmlidXRlAEVkaXRv
-ckJyb3dzYWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVt
-YXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBBc3NlbWJseUNvbmZpZ3VyYXRp
-b25BdHRyaWJ1dGUAQXNzZW1ibHlEZXNjcmlwdGlvbkF0dHJpYnV0ZQBDb21waWxhdGlvblJlbGF4
-YXRpb25zQXR0cmlidXRlAEFzc2VtYmx5UHJvZHVjdEF0dHJpYnV0ZQBBc3NlbWJseUNvcHlyaWdo
-dEF0dHJpYnV0ZQBTU0lTU2NyaXB0Q29tcG9uZW50RW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJs
-eUNvbXBhbnlBdHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAUHJlRXhlY3V0
-ZQBQb3N0RXhlY3V0ZQB2YWx1ZQBTeXN0ZW0uUnVudGltZS5WZXJzaW9uaW5nAEdldFN0cmluZwBT
-eXN0ZW0uQ29tcG9uZW50TW9kZWwAU0NfNWIyMDBkMDhhYzY1NGRmOThmNzdkOWUwZGZmZDUxNjIu
-ZGxsAHNldF9yZWdpb24yX0lzTnVsbABnZXRfcmVnaW9uX0lzTnVsbABnZXRfY29kaWdvX0lzTnVs
-bABnZXRfdGVycml0b3Jpb19Jc051bGwAU2V0TnVsbABzZXRfSXRlbQBTeXN0ZW0AcmVzb3VyY2VN
-YW4AU2NyaXB0TWFpbgBnZXRfcmVnaW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9i
-YWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AU3Ry
-aW5nQ29tcGFyaXNvbgBDdWx0dXJlSW5mbwBnZXRfY29kaWdvAGdldF90ZXJyaXRvcmlvAE91dHB1
-dE5hbWVNYXAAT3V0cHV0TWFwAEVudHJhZGEwQnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1
-ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5jdG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MA
-U3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNDXzViMjAw
-ZDA4YWM2NTRkZjk4Zjc3ZDllMGRmZmQ1MTYyLlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNl
-cwBEZWJ1Z2dpbmdNb2RlcwBTQ181YjIwMGQwOGFjNjU0ZGY5OGY3N2Q5ZTBkZmZkNTE2Mi5Qcm9w
-ZXJ0aWVzAFZhcmlhYmxlcwBHZXRCeXRlcwBCdWZmZXJDb2x1bW5JbmRleGVzAEdldENvbHVtbklu
-ZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rpb25zAE9iamVjdABFbmRPZlJvd3NldABnZXRf
-RGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVudABTY3JpcHRDb21wb25lbnQATWlj
-cm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQuU3FsU2VydmVyLlBpcGVsaW5lSG9z
-dABFbnRyYWRhMF9Qcm9jZXNzSW5wdXQARW50cmFkYTBfUHJvY2Vzc0lucHV0Um93AE5leHRSb3cA
-Z2V0X0Fzc2VtYmx5AAAAAAAPTwByAGkAZQBuAHQAZQAAE08AYwBjAGkAZABlAG4AdABlAAALTgBv
-AHIAdABlAAAHUwB1AHIAAIC9TABhACAAcAByAG8AcABpAGUAZABhAGQAIABJAHMATgB1AGwAbAAg
-AG4AbwAgAHAAdQBlAGQAZQAgAGUAcwB0AGEAYgBsAGUAYwBlAHIAcwBlACAAZQBuACAARgBhAGwA
-cwBlAC4AIABFAG4AIABzAHUAIABsAHUAZwBhAHIALAAgAGEAcwBpAGcAbgBlACAAdQBuACAAdgBh
-AGwAbwByACAAYQAgAGwAYQAgAGMAbwBsAHUAbQBuAGEALgAAE0UAbgB0AHIAYQBkAGEAIAAwAABx
-UwBDAF8ANQBiADIAMAAwAGQAMAA4AGEAYwA2ADUANABkAGYAOQA4AGYANwA3AGQAOQBlADAAZABm
-AGYAZAA1ADEANgAyAC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAA
-AMhrZ0rZuOtKjoqnr0wwrjAABCABAQgDIAABBSABARERBCABAQ4FIAEBEVkDBwEFCSADARI9HQgS
-QQMGEj0DBh0IBCABDggEIAECCAUgAR0FCAUgAgEIHAMgAAIGIAICDhFxBSABHQgIBgABEnUReQQg
-ABJ9BiACAQ4SfQi3elxWGTTgiQiJhF3NgIDMkQMGEhQDBhIYAwYSRQMGElEDBhJVAwYSIAUgAQES
-DAMgAA4EIAAdBQQgAQECCSAEAQgOEj0SQQUgAQESRQQAABJRBAAAElUFAAEBElUEAAASIAMAAAED
-KAAOAygAAgQoAB0FBAgAElEECAASVQQIABIgCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0
-aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTQ181YjIwMGQwOGFjNjU0ZGY5OGY3N2Q5ZTBkZmZkNTE2
-MgAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIwAABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9u
-PXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwQBAAAAtAAA
-AM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwg
-VmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2
-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
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACA
+MwAAAAAAAEgAAAACAAUAUCIAAEQQAAABAAAAAAAAAJQyAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAIAbwAAAAEAABEDbwoAAAYK
+Bn4SAAAKKBMAAAotKwYYcxQAAAooEwAACi0pBhlzFAAACigTAAAKLScGGnMUAAAKKBMAAAotJSoD
+cgEAAHBvDAAABioDchEAAHBvDAAABioDciUAAHBvDAAABioDcjEAAHBvDAAABioeAigQAAAGKioC
+AwQFKBUAAAoqUgJ7FgAACgJ7FwAAChaUbxgAAAoqIgIWKBkAAAoqUgJ7FgAACgJ7FwAACheUbxgA
+AAoqIgIXKBkAAAoqUgJ7FgAACgJ7FwAAChiUbxoAAAoqIgIYKBkAAAoqJgIZAygbAAAKKloDLAgC
+GSgcAAAKKnI5AABwcx0AAAp6HgIoHgAACioeAigfAAAKKn4CKCAAAAoCAnMUAAAGfQEAAAQCAnMV
+AAAGfQIAAAQqkgRy+AAAcBpvIQAACiwVAgUCAygiAAAKDgRzBQAABm8SAAAGKkorBwIDbxMAAAYD
+bw4AAAYt8SoGKjoCKCMAAAoCA30DAAAEKjoCKCMAAAoCA30EAAAEKh4CKCMAAAoqrn4FAAAELR5y
+DAEAcNAHAAACKCQAAApvJQAACnMmAAAKgAUAAAR+BQAABCoafgYAAAQqHgKABgAABCoafgcAAAQq
+HgIoJwAACioucxsAAAaABwAABCoAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA
+8AUAACN+AABcBgAAlAYAACNTdHJpbmdzAAAAAPAMAACAAQAAI1VTAHAOAAAQAAAAI0dVSUQAAACA
+DgAAxAEAACNCbG9iAAAAAAAAAAIAAAFXFaIBCQEAAAD6ATMAFgAAAQAAACAAAAAIAAAABwAAABwA
+AAAPAAAAJwAAABAAAAABAAAAAwAAAAsAAAAMAAAAAQAAAAQAAAABAAAAAAAIAwEAAAAAAAYA9AG7
+BAYAiAK7BAYAQAGoBA8ALwUAAAYAbQHhAwYA1wHhAwYAuAHhAwYAbwLhAwYAFALhAwYALQLhAwYA
+hAHhAwYAnwHDAgoASAKNAAYA6gKOAwoAegSNAA4AawSNAAoARASNAAoA9QWNAAYAuAWOAwYAIwGo
+BAYAiwTbBAYAHgTMAxIA8wDyAhIAVAHyAhIA2wC3AwYACAG7BAYA8wOOAwYA4AKOAwYADQSOAwYA
+rgCOAwYAWwCOAwYAfgbhAwAAAAAxAAAAAAABAAEAAQAQAKEDAAAQAAEAAQABABAAXAQAAD0AAQAF
+AAEAEADXBQAASQABABAAAQAQAKwFAABNAAMAFAABABAAbQUAAE0ABAAVAAAAEADiBD4FTQAFABYA
+AAEQAJwFPgVlAAcAGgAGAKwFjAAGAG0FkAABAOUFlAABAOUFlAARAJUDmAARAMsAnAARAEsAoABQ
+IAAAAADGAKYCBgABAFggAAAAAMYAsQIGAAEAYCAAAAAAxgBZBqQAAQDbIAAAAACGGJsEBgACAOMg
+AAAAAIYYmwQsAAIA7iAAAAAAhggqBKoABQADIQAAAACGCFUDVAAFAAwhAAAAAIYINQSqAAUAISEA
+AAAAhghnA1QABQAqIQAAAACGCKwDrgAFAD8hAAAAAIYIQwNUAAUASCEAAAAAhgglABAABQBSIQAA
+AACGCDADswAGAGkhAAAAAIYAcgZUAAcAcSEAAAAAhgC/BVQABwB5IQAAAACGGJsEBgAHAJkhAAAA
+AMYATAa4AAcAviEAAAAAxgFDBqQACwDRIQAAAADGAVkGpAAMANMhAAAAAIYYmwTCAA0A4iEAAAAA
+hhibBMIADgDxIQAAAACDGJsEBgAPAPkhAAAAAJMIhwTIAA8AJSIAAAAAkwizAM0ADwAsIgAAAACT
+CL8A0gAPADQiAAAAAJYIywXYABAAOyIAAAAAhhibBAYAEABDIgAAAACRGKEE3QAQAAAAAQB2BgAA
+AQCABAAAAgB3BQAAAwBSBAAAAQC9AgAAAQC9AgAAAQA6AAAAAgB/AAAAAwCABAAABABSBAAAAQCA
+BAAAAQB2BgAAAQD7BQAAAQD7BQAAAQC9AgkAmwQBABEAmwQGABkAmwQKACkAmwQQADEAmwQQADkA
+mwQQAEEAmwQQAEkAmwQQAFEAmwQQAFkAmwQQAGEAmwQQAGkAmwQGAKEAmwQGAMEAmwQVANEAmwQG
+AJEApgIGAJEAsQIGAHEAiQAgAHEAhwYkAHEAmwQBAHkAmwQsAHkAgAQ2AHkAdwU6AIEA3QI+AHkA
+dgNDAIEA5wJIAHkAhQNOAHkAfQMBANkAmwQQAHkAcgZUAHkAvwVUAJEAmwQGAOEApQVYAJEAiwVf
+AJkAmwQGAPEAbQBlAPEAegZsAKkAmwRyAMkAmwQGAC4ACwD9AC4AEwAGAS4AGwAlAS4AIwAuAS4A
+KwBXAS4AMwBXAS4AOwBXAS4AQwAuAS4ASwBdAS4AUwBXAS4AWwB0AUMAYwC+AeEAewC+AeMAawC+
+ASkBcwAlAUkBcwAlARsAAwABAAcACQAIAAsAAAAuBOEAAABZA+UAAAA5BOEAAABrA+UAAACwA+kA
+AABHA+UAAAApAOEAAAA0A+UAAACLBO4AAADTAPMAAADPBfgAAgAGAAMAAgAHAAUAAgAIAAcAAgAJ
+AAkAAgAKAAsAAgALAA0AAQAMAA8AAQANABEAAgAXABMAAgAYABUAAQAZABUAAgAaABcABIAAAAEA
+AAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAHoAQgAAAAAADwAAAAAAAAAAAAAAgwAFBgAAAAAP
+AAAAAAAAAAAAAACDACIGAAAAAAQAAAAAAAAAAAAAAHoAjgMAAAAAAAAAAAEAAADsBAAAAAAAU0Nf
+NWIyMDBkMDhhYzY1NGRmOThmNzdkOWUwZGZmZDUxNjIAc2V0X3JlZ2lvbjIAPE1vZHVsZT4ASW5w
+dXRJRABtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZy
+b21IYW5kbGUASW5wdXROYW1lAE9uZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBU
+eXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNhdGlvblNl
+dHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0
+ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9y
+QnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1h
+cmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlv
+bkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhh
+dGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0
+QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5
+Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQcmVFeGVjdXRl
+AFBvc3RFeGVjdXRlAHZhbHVlAFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAR2V0U3RyaW5nAEdl
+dERlY2ltYWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDXzViMjAwZDA4YWM2NTRkZjk4Zjc3ZDll
+MGRmZmQ1MTYyLmRsbABzZXRfcmVnaW9uMl9Jc051bGwAZ2V0X3JlZ2lvbl9Jc051bGwAZ2V0X2Nv
+ZGlnb19Jc051bGwAZ2V0X3RlcnJpdG9yaW9fSXNOdWxsAFNldE51bGwAc2V0X0l0ZW0AU3lzdGVt
+AHJlc291cmNlTWFuAFNjcmlwdE1haW4AZ2V0X3JlZ2lvbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBT
+eXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhj
+ZXB0aW9uAFN0cmluZ0NvbXBhcmlzb24AQ3VsdHVyZUluZm8AZ2V0X2NvZGlnbwBnZXRfdGVycml0
+b3JpbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABFbnRyYWRhMEJ1ZmZlcgBQaXBlbGluZUJ1ZmZl
+cgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRp
+YWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNl
+cwBTQ181YjIwMGQwOGFjNjU0ZGY5OGY3N2Q5ZTBkZmZkNTE2Mi5Qcm9wZXJ0aWVzLlJlc291cmNl
+cy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfNWIyMDBkMDhhYzY1NGRmOThmNzdkOWUwZGZm
+ZDUxNjIuUHJvcGVydGllcwBWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5J
+bmRleGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBPYmplY3QARW5kT2ZSb3dzZXQAZ2V0
+X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9uZW50AE1p
+Y3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGluZUhv
+c3QARW50cmFkYTBfUHJvY2Vzc0lucHV0AEVudHJhZGEwX1Byb2Nlc3NJbnB1dFJvdwBOZXh0Um93
+AGdldF9Bc3NlbWJseQBvcF9FcXVhbGl0eQAAAA9PAHIAaQBlAG4AdABlAAATTwBjAGMAaQBkAGUA
+bgB0AGUAAAtOAG8AcgB0AGUAAAdTAHUAcgAAgL1MAGEAIABwAHIAbwBwAGkAZQBkAGEAZAAgAEkA
+cwBOAHUAbABsACAAbgBvACAAcAB1AGUAZABlACAAZQBzAHQAYQBiAGwAZQBjAGUAcgBzAGUAIABl
+AG4AIABGAGEAbABzAGUALgAgAEUAbgAgAHMAdQAgAGwAdQBnAGEAcgAsACAAYQBzAGkAZwBuAGUA
+IAB1AG4AIAB2AGEAbABvAHIAIABhACAAbABhACAAYwBvAGwAdQBtAG4AYQAuAAATRQBuAHQAcgBh
+AGQAYQAgADAAAHFTAEMAXwA1AGIAMgAwADAAZAAwADgAYQBjADYANQA0AGQAZgA5ADgAZgA3ADcA
+ZAA5AGUAMABkAGYAZgBkADUAMQA2ADIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1
+AHIAYwBlAHMAAAAA8taoSi4HVk+WkBKK4Id1OwAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERXQQH
+ARE5AwYROQcAAgIRORE5CSADARJBHQgSRQMGEkEDBh0IBCABDggEIAECCAUgARE5CAUgAgEIHAMg
+AAIGIAICDhF1BSABHQgIBgABEnkRfQUgABKAgQcgAgEOEoCBCLd6XFYZNOCJCImEXc2AgMyRAwYS
+FAMGEhgDBhJJAwYSVQMGElkDBhIgBSABARIMAyAADgQgABE5BCABAQIJIAQBCA4SQRJFBSABARJJ
+BAAAElUEAAASWQUAAQESWQQAABIgAwAAAQMoAA4DKAACBCgAETkECAASVQQIABJZBAgAEiAIAQAI
+AAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzViMjAw
+ZDA4YWM2NTRkZjk4Zjc3ZDllMGRmZmQ1MTYyAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjAA
+AEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUS
+Lk5FVCBGcmFtZXdvcmsgNC43BAEAAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2Vz
+LlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
+YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50
+aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAHQzAAAAAAAAAAAAAI4zAAAAIAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAACAMwAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxs
+AAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
 SAAAAFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
@@ -1397,7 +1397,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAATDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAoDMAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1469,9 +1469,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                       lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[territorio]" />
                     <inputColumn
                       refId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0].Columns[region]"
-                      cachedDataType="bytes"
-                      cachedLength="50"
+                      cachedDataType="numeric"
                       cachedName="region"
+                      cachedPrecision="18"
                       lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]" />
                   </inputColumns>
                   <externalMetadataColumns />
@@ -1571,13 +1571,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                     </outputColumn>
                     <outputColumn
                       refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]"
-                      dataType="bytes"
+                      dataType="numeric"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[region]"
-                      length="50"
                       lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]"
                       name="region"
+                      precision="18"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1607,9 +1607,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                       name="territorio" />
                     <externalMetadataColumn
                       refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[region]"
-                      dataType="bytes"
-                      length="50"
-                      name="region" />
+                      dataType="numeric"
+                      name="region"
+                      precision="18" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1731,9 +1731,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                       lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[territorio]" />
                     <inputColumn
                       refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[region]"
-                      cachedDataType="bytes"
-                      cachedLength="50"
+                      cachedDataType="numeric"
                       cachedName="region"
+                      cachedPrecision="18"
                       externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
                       lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]" />
                     <inputColumn
@@ -1760,9 +1760,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                       name="territorio" />
                     <externalMetadataColumn
                       refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
-                      dataType="bytes"
-                      length="50"
-                      name="region" />
+                      dataType="numeric"
+                      name="region"
+                      precision="18" />
                     <externalMetadataColumn
                       refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region2]"
                       dataType="wstr"
@@ -2316,6 +2316,14 @@ on o.OrderID = d.OrderID;</property>
           Id="Package\Copiar Productos"
           TopLeft="70.727272727273,221.909090909091" />
         <NodeLayout
+          Size="160,42"
+          Id="Package\Copiar Territorios"
+          TopLeft="528,230" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Copiar Ventas"
+          TopLeft="317,227" />
+        <NodeLayout
           Size="143,42"
           Id="Package\Limpia Tablas"
           TopLeft="319,46" />
@@ -2353,10 +2361,6 @@ on o.OrderID = d.OrderID;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Copiar Ventas"
-          TopLeft="317,227" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
           TopLeft="391,88">
@@ -2379,10 +2383,6 @@ on o.OrderID = d.OrderID;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="160,42"
-          Id="Package\Copiar Territorios"
-          TopLeft="528,230" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2425,7 +2425,7 @@ on o.OrderID = d.OrderID;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Copiar Productos\OLE DB Source">
+    design-time-name="Package\Copiar Productos\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2438,7 +2438,108 @@ on o.OrderID = d.OrderID;</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Copiar Productos\OLE DB Destination">
+    design-time-name="Package\Copiar Productos\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Copiar Territorios">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Copiar Territorios\Flat File Source"
+          TopLeft="291,54" />
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Copiar Territorios\Componente de script"
+          TopLeft="323,170" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Copiar Territorios\OLE DB Destination"
+          TopLeft="273,309" />
+        <EdgeLayout
+          Id="Package\Copiar Territorios.Paths[Salida 0]"
+          TopLeft="414,212">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-55.5,97"
+              Start="0,0"
+              End="-55.5,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.5"
+                    Point2="0,48.5"
+                    Point3="-4,48.5" />
+                  <mssgle:LineSegment
+                    End="-51.5,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-51.5,48.5"
+                    Point2="-55.5,48.5"
+                    Point3="-55.5,52.5" />
+                  <mssgle:LineSegment
+                    End="-55.5,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Copiar Territorios.Paths[Flat File Source Output]"
+          TopLeft="366.5,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.5,74"
+              Start="0,0"
+              End="47.5,66.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33"
+                    Point2="0,37"
+                    Point3="4,37" />
+                  <mssgle:LineSegment
+                    End="43.5,37" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5,37"
+                    Point2="47.5,37"
+                    Point3="47.5,41" />
+                  <mssgle:LineSegment
+                    End="47.5,66.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copiar Territorios\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2489,14 +2590,6 @@ on o.OrderID = d.OrderID;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Copiar Ventas\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Copiar Ventas\OLE DB Destination">
     <Properties>
       <Property>
@@ -2509,104 +2602,11 @@ on o.OrderID = d.OrderID;</property>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Copiar Territorios">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Copiar Territorios\Flat File Source"
-          TopLeft="291,54" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Copiar Territorios\OLE DB Destination"
-          TopLeft="273,309" />
-        <NodeLayout
-          Size="182,42"
-          Id="Package\Copiar Territorios\Componente de script"
-          TopLeft="323,170" />
-        <EdgeLayout
-          Id="Package\Copiar Territorios.Paths[Flat File Source Output]"
-          TopLeft="366.5,96">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="47.5,74"
-              Start="0,0"
-              End="47.5,66.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33"
-                    Point2="0,37"
-                    Point3="4,37" />
-                  <mssgle:LineSegment
-                    End="43.5,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="43.5,37"
-                    Point2="47.5,37"
-                    Point3="47.5,41" />
-                  <mssgle:LineSegment
-                    End="47.5,66.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Copiar Territorios.Paths[Salida 0]"
-          TopLeft="414,212">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-55.5,97"
-              Start="0,0"
-              End="-55.5,89.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,44.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44.5"
-                    Point2="0,48.5"
-                    Point3="-4,48.5" />
-                  <mssgle:LineSegment
-                    End="-51.5,48.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-51.5,48.5"
-                    Point2="-55.5,48.5"
-                    Point3="-55.5,52.5" />
-                  <mssgle:LineSegment
-                    End="-55.5,89.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Copiar Territorios\OLE DB Destination">
+    design-time-name="Package\Copiar Ventas\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
