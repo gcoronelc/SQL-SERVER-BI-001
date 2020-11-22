@@ -1,0 +1,27 @@
+Trnsformación 3: Script Component
+Nombre de la tarea: COPIAR TERRITORIOS
+Se puede usar como origen de datos, destino de datos o transformación de datos 
+Se copiara territoios de un archivo de texto: TERRITORIOS.TXT
+Se debe crear una nueva conexión de tipo FLATFILE para el origen de datos 
+Lenguaje: C#
+	
+	Script:
+	
+		public override void Entrada0_ProcessInputRow(Entrada0Buffer Row)
+		{
+			switch (Row.Columna2)
+			{
+				case 1:
+					Row.Region = "Oriente";
+					break;
+				case 2:
+					Row.Region = "Occidente";
+					break;
+				case 3:
+					Row.Region = "Norte";
+					break;
+				case 4:
+					Row.Region = "Sur";
+					break;
+			}
+		}

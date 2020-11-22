@@ -11,12 +11,526 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{FCDFAA83-90D2-4A81-A6F0-6343FB54C03D}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{5E7D369C-9EEC-46E4-8364-023EA7DBEED3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:Variables />
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Datos de Territorios]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{07045B65-D940-4702-8DD5-FFD97045886F}"
+      DTS:ObjectName="Datos de Territorios">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\GITHUB\SQL-SERVER\SQL-SERVER-BI-001\Unidad02\TERRITORIOS.TXT">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna 0"
+              DTS:DTSID="{E1A72FC3-EAC1-498E-A451-229D950FCD7C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna 1"
+              DTS:DTSID="{0E394741-74B1-4B66-A845-F7D5EC57AB32}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Columna 2"
+              DTS:DTSID="{E8A4653A-8C53-42A9-B497-3249EFF22E50}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Despachos]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{434E209C-2DCA-46B5-97B7-1F9913D9E976}"
+      DTS:ObjectName="Despachos">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::VarDespacho]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdPlanta"
+              DTS:DTSID="{4E233BC6-5FA5-4548-84E2-10917D7E870F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdProducto"
+              DTS:DTSID="{33DA82F2-C183-4D8F-82AA-56F9140F816A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdCliente"
+              DTS:DTSID="{E5F4BDEE-E008-4244-B222-8AFF720AF03A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cantidad"
+              DTS:DTSID="{939434BA-0F78-4B90-B52C-B6FE8963C62C}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{69F4F691-D3ED-4E5C-B18F-5508F2878B5C}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="VarDespacho">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Archivos de Despacho"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Contenedor de bucles Foreach"
+      DTS:DTSID="{D422B167-2F18-4A8E-93BA-7BABAA730AD2}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Archivos de Despacho">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{5621935D-D2FB-4D05-9DEF-6DD1B99C7A29}"
+        DTS:ObjectName="{5621935D-D2FB-4D05-9DEF-6DD1B99C7A29}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="D:\GITHUB\SQL-SERVER\SQL-SERVER-BI-001\Unidad02\ForEach" />
+            <FEFEProperty
+              FileSpec="DespachosPlanta*.txt" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Archivos de Despacho\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7CC15925-6939-4957-B85F-C95B35A35C16}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Archivos de Despacho\Data Flow Task\Despachos"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="10250"
+                  name="Despachos"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Despachos]"
+                      connectionManagerRefId="Package.ConnectionManagers[Despachos]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdPlanta]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[IdPlanta]"
+                          length="50"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdPlanta]"
+                          name="IdPlanta"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdProducto]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[IdProducto]"
+                          length="50"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdProducto]"
+                          name="IdProducto"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[IdCliente]"
+                          length="50"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdCliente]"
+                          name="IdCliente"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[Cantidad]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[Cantidad]"
+                          length="50"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[Cantidad]"
+                          name="Cantidad"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[IdPlanta]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="IdPlanta" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[IdProducto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="IdProducto" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[IdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="IdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].ExternalColumns[Cantidad]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Cantidad" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DatosDespacho]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{9DF0BBEA-5B63-473F-AE71-14F55B949628}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[localhost.PRUEBA2_DM.sa]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdPlanta]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="IdPlanta"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdPlanta]"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdPlanta]" />
+                        <inputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdProducto]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="IdProducto"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdProducto]"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdProducto]" />
+                        <inputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdCliente]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="IdCliente"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdCliente]"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[IdCliente]" />
+                        <inputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cantidad]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Cantidad"
+                          externalMetadataColumnId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output].Columns[Cantidad]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdPlanta]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="IdPlanta" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdProducto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="IdProducto" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdCliente]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="IdCliente" />
+                        <externalMetadataColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cantidad]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Cantidad" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Archivos de Despacho\Data Flow Task.Paths[Flat File Source Output]"
+                  endId="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Archivos de Despacho\Data Flow Task\Despachos.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{B40F7CB3-76BB-4CAE-9114-D71FE85626DB}"
+          DTS:ObjectName="{B40F7CB3-76BB-4CAE-9114-D71FE85626DB}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::VarDespacho" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Copiar Productos"
       DTS:CreationName="Microsoft.Pipeline"
@@ -527,7 +1041,7 @@
       DTS:refId="Package\Copiar Territorios"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{B5F69822-B8B4-406D-A5FF-758BB98EC917}"
+      DTS:DTSID="{44B0E232-7FC0-4E47-90E3-CF79F1D22092}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Copiar Territorios"
@@ -553,78 +1067,6 @@
                   state="cdata">
                   <arrayElements
                     arrayElementCount="30">
-                    <arrayElement
-                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
-*  Microsoft SQL Server Integration Services component wrapper
-*  This module defines the base class for your component
-*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
-
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-using Microsoft.SqlServer.Dts.Runtime.Wrapper;
-
-public class UserComponent: ScriptComponent
-{
-    public Connections Connections;
-    public Variables Variables;
-    public UserComponent()
-    {
-        Connections = new Connections(this);
-        Variables = new Variables(this);
-    }
-
-    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
-    {
-
-        if (InputName.Equals(@"Entrada 0", StringComparison.Ordinal))
-        {
-            Entrada0_ProcessInput(new Entrada0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
-        }
-
-    }
-
-    public virtual void Entrada0_ProcessInput(Entrada0Buffer Buffer)
-    {
-        while (Buffer.NextRow())
-        {
-            Entrada0_ProcessInputRow(Buffer);
-        }
-    }
-
-    public virtual void Entrada0_ProcessInputRow(Entrada0Buffer Row)
-    {
-    }
-
-}
-
-public class Connections
-{
-    ScriptComponent ParentComponent;
-
-    public Connections(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-}
-
-public class Variables
-{
-    ScriptComponent ParentComponent;
-
-    public Variables(ScriptComponent Component)
-    {
-        ParentComponent = Component;
-    }
-
-}
-]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[Properties\Resources.resx]]></arrayElement>
                     <arrayElement
@@ -868,19 +1310,19 @@ public class ScriptMain : UserComponent
     /// <param name="Row">The row that is currently passing through the component</param>
     public override void Entrada0_ProcessInputRow(Entrada0Buffer Row)
     {
-        switch (Row.region)
+        switch (Row.Columna2)
         {
-            case 1:
-                Row.region2 = "Oriente";
+            case "1":
+                Row.Region = "Oriente";
                 break;
-            case 2:
-                Row.region2 = "Occidente";
+            case "2":
+                Row.Region = "Occidente";
                 break;
-            case 3:
-                Row.region2 = "Norte";
+            case "3":
+                Row.Region = "Norte";
                 break;
-            case 4:
-                Row.region2 = "Sur";
+            case "4":
+                Row.Region = "Sur";
                 break;
         }
     }
@@ -888,144 +1330,7 @@ public class ScriptMain : UserComponent
 }
 ]]></arrayElement>
                     <arrayElement
-                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
-*  Microsoft SQL Server Integration Services buffer wrappers
-*  This module defines classes for accessing data flow buffers
-*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
-
-
-
-using System;
-using System.Data;
-using Microsoft.SqlServer.Dts.Pipeline;
-using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
-
-public class Entrada0Buffer: ScriptBuffer
-
-{
-    public Entrada0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
-        : base(Buffer, BufferColumnIndexes, OutputMap)
-    {
-    }
-
-    public String codigo
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[0]);
-        }
-    }
-    public bool codigo_IsNull
-    {
-        get
-        {
-            return IsNull(0);
-        }
-    }
-
-    public String territorio
-    {
-        get
-        {
-            return Buffer.GetString(BufferColumnIndexes[1]);
-        }
-    }
-    public bool territorio_IsNull
-    {
-        get
-        {
-            return IsNull(1);
-        }
-    }
-
-    public Decimal region
-    {
-        get
-        {
-            return Buffer.GetDecimal(BufferColumnIndexes[2]);
-        }
-    }
-    public bool region_IsNull
-    {
-        get
-        {
-            return IsNull(2);
-        }
-    }
-
-    public String region2
-    {
-        set
-        {
-            this[3] = value;
-        }
-    }
-    public bool region2_IsNull
-    {
-        set
-        {
-            if (value)
-            {
-                SetNull(3);
-            }
-            else
-            {
-                throw new InvalidOperationException("La propiedad IsNull no puede establecerse en False. En su lugar, asigne un valor a la columna.");
-            }
-        }
-    }
-
-    new public bool NextRow()
-    {
-        return base.NextRow();
-    }
-
-    new public bool EndOfRowset()
-    {
-        return base.EndOfRowset();
-    }
-
-}
-]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5b200d08ac654df98f77d9e0dffd5162.Properties.Settings.get_Default():SC_5b200d08ac654df98f77d9e0dffd5162.Properties.Sett" +
-    "ings")]
-
-namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}
-]]></arrayElement>
-                    <arrayElement
-                      dataType="System.String"><![CDATA[SC_5b200d08ac654df98f77d9e0dffd5162.csproj]]></arrayElement>
+                      dataType="System.String"><![CDATA[SC_5fb7bccaf4e54c53b23cd7f018465916.csproj]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF8]]></arrayElement>
                     <arrayElement
@@ -1037,11 +1342,11 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{51a787c0-6b09-4a7b-a9a3-f62c01630c50}</ProjectGuid>
+    <ProjectGuid>{3b9fbee2-60ae-4fc7-a1d8-477b9a58a5b0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SC_5b200d08ac654df98f77d9e0dffd5162</RootNamespace>
-    <AssemblyName>SC_5b200d08ac654df98f77d9e0dffd5162</AssemblyName>
+    <RootNamespace>SC_5fb7bccaf4e54c53b23cd7f018465916</RootNamespace>
+    <AssemblyName>SC_5fb7bccaf4e54c53b23cd7f018465916</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
@@ -1108,7 +1413,7 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
     <VisualStudio>
       <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
         <ProjectProperties HostName="ScriptComponent" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="cs" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
-        <Host Name="ScriptComponent" GeneratedNamespace="SC_5b200d08ac654df98f77d9e0dffd5162" IconIndex="0"></Host>
+        <Host Name="ScriptComponent" GeneratedNamespace="SC_5fb7bccaf4e54c53b23cd7f018465916" IconIndex="0"></Host>
         <ProjectClient>
           <HostIdentifier>SSIS_SC150</HostIdentifier>
         </ProjectClient>
@@ -1117,6 +1422,215 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
   </ProjectExtensions>
 </Project>]]></arrayElement>
                     <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services component wrapper
+*  This module defines the base class for your component
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+using Microsoft.SqlServer.Dts.Runtime.Wrapper;
+
+public class UserComponent: ScriptComponent
+{
+    public Connections Connections;
+    public Variables Variables;
+    public UserComponent()
+    {
+        Connections = new Connections(this);
+        Variables = new Variables(this);
+    }
+
+    public override void ProcessInput(int InputID, string InputName, PipelineBuffer Buffer, OutputNameMap OutputMap)
+    {
+
+        if (InputName.Equals(@"Entrada 0", StringComparison.Ordinal))
+        {
+            Entrada0_ProcessInput(new Entrada0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap));
+        }
+
+    }
+
+    public virtual void Entrada0_ProcessInput(Entrada0Buffer Buffer)
+    {
+        while (Buffer.NextRow())
+        {
+            Entrada0_ProcessInputRow(Buffer);
+        }
+    }
+
+    public virtual void Entrada0_ProcessInputRow(Entrada0Buffer Row)
+    {
+    }
+
+}
+
+public class Connections
+{
+    ScriptComponent ParentComponent;
+
+    public Connections(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+
+public class Variables
+{
+    ScriptComponent ParentComponent;
+
+    public Variables(ScriptComponent Component)
+    {
+        ParentComponent = Component;
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Properties\Settings.Designer.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5fb7bccaf4e54c53b23cd7f018465916.Properties.Settings.get_Default():SC_5fb7bccaf4e54c53b23cd7f018465916.Properties.Sett" +
+    "ings")]
+
+namespace SC_5fb7bccaf4e54c53b23cd7f018465916.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.cs]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[/* THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+*  Microsoft SQL Server Integration Services buffer wrappers
+*  This module defines classes for accessing data flow buffers
+*  THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT! */
+
+
+
+using System;
+using System.Data;
+using Microsoft.SqlServer.Dts.Pipeline;
+using Microsoft.SqlServer.Dts.Pipeline.Wrapper;
+
+public class Entrada0Buffer: ScriptBuffer
+
+{
+    public Entrada0Buffer(PipelineBuffer Buffer, int[] BufferColumnIndexes, OutputNameMap OutputMap)
+        : base(Buffer, BufferColumnIndexes, OutputMap)
+    {
+    }
+
+    public String Columna0
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[0]);
+        }
+    }
+    public bool Columna0_IsNull
+    {
+        get
+        {
+            return IsNull(0);
+        }
+    }
+
+    public String Columna1
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[1]);
+        }
+    }
+    public bool Columna1_IsNull
+    {
+        get
+        {
+            return IsNull(1);
+        }
+    }
+
+    public String Columna2
+    {
+        get
+        {
+            return Buffer.GetString(BufferColumnIndexes[2]);
+        }
+    }
+    public bool Columna2_IsNull
+    {
+        get
+        {
+            return IsNull(2);
+        }
+    }
+
+    public String Region
+    {
+        set
+        {
+            this[3] = value;
+        }
+    }
+    public bool Region_IsNull
+    {
+        set
+        {
+            if (value)
+            {
+                SetNull(3);
+            }
+            else
+            {
+                throw new InvalidOperationException("La propiedad IsNull no puede establecerse en False. En su lugar, asigne un valor a la columna.");
+            }
+        }
+    }
+
+    new public bool NextRow()
+    {
+        return base.NextRow();
+    }
+
+    new public bool EndOfRowset()
+    {
+        return base.EndOfRowset();
+    }
+
+}
+]]></arrayElement>
+                    <arrayElement
                       dataType="System.String"><![CDATA[Project]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
@@ -1124,17 +1638,17 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
                       dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
 <c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
   <msb:PropertyGroup>
-    <msb:CodeName>SC_5b200d08ac654df98f77d9e0dffd5162</msb:CodeName>
+    <msb:CodeName>SC_5fb7bccaf4e54c53b23cd7f018465916</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
-    <msb:DisplayName>SC_5b200d08ac654df98f77d9e0dffd5162</msb:DisplayName>
-    <msb:ProjectId>{56AD0150-691E-48EC-95CE-796F89F7CD03}</msb:ProjectId>
+    <msb:DisplayName>SC_5fb7bccaf4e54c53b23cd7f018465916</msb:DisplayName>
+    <msb:ProjectId>{A007F046-62E8-4F6A-BF30-04FAA221A56B}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
-    <msb:Project Include="SC_5b200d08ac654df98f77d9e0dffd5162.csproj" />
+    <msb:Project Include="SC_5fb7bccaf4e54c53b23cd7f018465916.csproj" />
+    <msb:File Include="ComponentWrapper.cs" />
     <msb:File Include="Properties\Settings.Designer.cs" />
     <msb:File Include="main.cs" />
     <msb:File Include="BufferWrapper.cs" />
-    <msb:File Include="ComponentWrapper.cs" />
     <msb:File Include="Properties\Settings.settings" />
     <msb:File Include="Properties\AssemblyInfo.cs" />
     <msb:File Include="Properties\Resources.resx" />
@@ -1154,11 +1668,11 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("SC_5b200d08ac654df98f77d9e0dffd5162")]
+[assembly: AssemblyTitle("SC_5fb7bccaf4e54c53b23cd7f018465916")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SC_5b200d08ac654df98f77d9e0dffd5162")]
+[assembly: AssemblyProduct("SC_5fb7bccaf4e54c53b23cd7f018465916")]
 [assembly: AssemblyCopyright("Copyright @  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -1201,14 +1715,14 @@ using System.Runtime.CompilerServices;
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5b200d08ac654df98f77d9e0dffd5162.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5fb7bccaf4e54c53b23cd7f018465916.Properties.Resources.get_ResourceManager():System.Resources.Resou" +
     "rceManager")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5b200d08ac654df98f77d9e0dffd5162.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5fb7bccaf4e54c53b23cd7f018465916.Properties.Resources.get_Culture():System.Globalization.CultureIn" +
     "fo")]
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5b200d08ac654df98f77d9e0dffd5162.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="SC_5fb7bccaf4e54c53b23cd7f018465916.Properties.Resources.set_Culture(System.Globalization.CultureInfo" +
     "):Void")]
 
-namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
+namespace SC_5fb7bccaf4e54c53b23cd7f018465916.Properties {
     
     
     /// <summary>
@@ -1236,7 +1750,7 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if ((resourceMan == null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_5b200d08ac654df98f77d9e0dffd5162.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SC_5fb7bccaf4e54c53b23cd7f018465916.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -1270,106 +1784,106 @@ namespace SC_5b200d08ac654df98f77d9e0dffd5162.Properties {
                   <arrayElements
                     arrayElementCount="2">
                     <arrayElement
-                      dataType="System.String"><![CDATA[SC_5b200d08ac654df98f77d9e0dffd5162.dll]]></arrayElement>
+                      dataType="System.String"><![CDATA[SC_5fb7bccaf4e54c53b23cd7f018465916.dll]]></arrayElement>
                     <arrayElement
                       dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAPwJsl8AAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAnjMA
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDACOlul8AAAAAAAAAAOAAIiALATAAABQAAAAIAAAAAAAAcjMA
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
-ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAEwzAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAACAzAABPAAAAAEAAAEgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAApBMAAAAgAAAAFAAAAAIA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAeBMAAAAgAAAAFAAAAAIA
 AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAEgEAAAAQAAAAAYAAAAWAAAAAAAAAAAAAAAAAABAAABA
-LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAACA
-MwAAAAAAAEgAAAACAAUAUCIAAEQQAAABAAAAAAAAAJQyAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAHAAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAABU
+MwAAAAAAAEgAAAACAAUAUCIAABgQAAABAAAAAAAAAGgyAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBAAAAoqHgIoEQAACioTMAIAbwAAAAEAABEDbwoAAAYK
-Bn4SAAAKKBMAAAotKwYYcxQAAAooEwAACi0pBhlzFAAACigTAAAKLScGGnMUAAAKKBMAAAotJSoD
-cgEAAHBvDAAABioDchEAAHBvDAAABioDciUAAHBvDAAABioDcjEAAHBvDAAABioeAigQAAAGKioC
-AwQFKBUAAAoqUgJ7FgAACgJ7FwAAChaUbxgAAAoqIgIWKBkAAAoqUgJ7FgAACgJ7FwAACheUbxgA
-AAoqIgIXKBkAAAoqUgJ7FgAACgJ7FwAAChiUbxoAAAoqIgIYKBkAAAoqJgIZAygbAAAKKloDLAgC
-GSgcAAAKKnI5AABwcx0AAAp6HgIoHgAACioeAigfAAAKKn4CKCAAAAoCAnMUAAAGfQEAAAQCAnMV
-AAAGfQIAAAQqkgRy+AAAcBpvIQAACiwVAgUCAygiAAAKDgRzBQAABm8SAAAGKkorBwIDbxMAAAYD
-bw4AAAYt8SoGKjoCKCMAAAoCA30DAAAEKjoCKCMAAAoCA30EAAAEKh4CKCMAAAoqrn4FAAAELR5y
-DAEAcNAHAAACKCQAAApvJQAACnMmAAAKgAUAAAR+BQAABCoafgYAAAQqHgKABgAABCoafgcAAAQq
-HgIoJwAACioucxsAAAaABwAABCoAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA
-8AUAACN+AABcBgAAlAYAACNTdHJpbmdzAAAAAPAMAACAAQAAI1VTAHAOAAAQAAAAI0dVSUQAAACA
-DgAAxAEAACNCbG9iAAAAAAAAAAIAAAFXFaIBCQEAAAD6ATMAFgAAAQAAACAAAAAIAAAABwAAABwA
-AAAPAAAAJwAAABAAAAABAAAAAwAAAAsAAAAMAAAAAQAAAAQAAAABAAAAAAAIAwEAAAAAAAYA9AG7
-BAYAiAK7BAYAQAGoBA8ALwUAAAYAbQHhAwYA1wHhAwYAuAHhAwYAbwLhAwYAFALhAwYALQLhAwYA
-hAHhAwYAnwHDAgoASAKNAAYA6gKOAwoAegSNAA4AawSNAAoARASNAAoA9QWNAAYAuAWOAwYAIwGo
-BAYAiwTbBAYAHgTMAxIA8wDyAhIAVAHyAhIA2wC3AwYACAG7BAYA8wOOAwYA4AKOAwYADQSOAwYA
-rgCOAwYAWwCOAwYAfgbhAwAAAAAxAAAAAAABAAEAAQAQAKEDAAAQAAEAAQABABAAXAQAAD0AAQAF
-AAEAEADXBQAASQABABAAAQAQAKwFAABNAAMAFAABABAAbQUAAE0ABAAVAAAAEADiBD4FTQAFABYA
-AAEQAJwFPgVlAAcAGgAGAKwFjAAGAG0FkAABAOUFlAABAOUFlAARAJUDmAARAMsAnAARAEsAoABQ
-IAAAAADGAKYCBgABAFggAAAAAMYAsQIGAAEAYCAAAAAAxgBZBqQAAQDbIAAAAACGGJsEBgACAOMg
-AAAAAIYYmwQsAAIA7iAAAAAAhggqBKoABQADIQAAAACGCFUDVAAFAAwhAAAAAIYINQSqAAUAISEA
-AAAAhghnA1QABQAqIQAAAACGCKwDrgAFAD8hAAAAAIYIQwNUAAUASCEAAAAAhgglABAABQBSIQAA
-AACGCDADswAGAGkhAAAAAIYAcgZUAAcAcSEAAAAAhgC/BVQABwB5IQAAAACGGJsEBgAHAJkhAAAA
-AMYATAa4AAcAviEAAAAAxgFDBqQACwDRIQAAAADGAVkGpAAMANMhAAAAAIYYmwTCAA0A4iEAAAAA
-hhibBMIADgDxIQAAAACDGJsEBgAPAPkhAAAAAJMIhwTIAA8AJSIAAAAAkwizAM0ADwAsIgAAAACT
-CL8A0gAPADQiAAAAAJYIywXYABAAOyIAAAAAhhibBAYAEABDIgAAAACRGKEE3QAQAAAAAQB2BgAA
-AQCABAAAAgB3BQAAAwBSBAAAAQC9AgAAAQC9AgAAAQA6AAAAAgB/AAAAAwCABAAABABSBAAAAQCA
-BAAAAQB2BgAAAQD7BQAAAQD7BQAAAQC9AgkAmwQBABEAmwQGABkAmwQKACkAmwQQADEAmwQQADkA
-mwQQAEEAmwQQAEkAmwQQAFEAmwQQAFkAmwQQAGEAmwQQAGkAmwQGAKEAmwQGAMEAmwQVANEAmwQG
-AJEApgIGAJEAsQIGAHEAiQAgAHEAhwYkAHEAmwQBAHkAmwQsAHkAgAQ2AHkAdwU6AIEA3QI+AHkA
-dgNDAIEA5wJIAHkAhQNOAHkAfQMBANkAmwQQAHkAcgZUAHkAvwVUAJEAmwQGAOEApQVYAJEAiwVf
-AJkAmwQGAPEAbQBlAPEAegZsAKkAmwRyAMkAmwQGAC4ACwD9AC4AEwAGAS4AGwAlAS4AIwAuAS4A
-KwBXAS4AMwBXAS4AOwBXAS4AQwAuAS4ASwBdAS4AUwBXAS4AWwB0AUMAYwC+AeEAewC+AeMAawC+
-ASkBcwAlAUkBcwAlARsAAwABAAcACQAIAAsAAAAuBOEAAABZA+UAAAA5BOEAAABrA+UAAACwA+kA
-AABHA+UAAAApAOEAAAA0A+UAAACLBO4AAADTAPMAAADPBfgAAgAGAAMAAgAHAAUAAgAIAAcAAgAJ
-AAkAAgAKAAsAAgALAA0AAQAMAA8AAQANABEAAgAXABMAAgAYABUAAQAZABUAAgAaABcABIAAAAEA
-AAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAHoAQgAAAAAADwAAAAAAAAAAAAAAgwAFBgAAAAAP
-AAAAAAAAAAAAAACDACIGAAAAAAQAAAAAAAAAAAAAAHoAjgMAAAAAAAAAAAEAAADsBAAAAAAAU0Nf
-NWIyMDBkMDhhYzY1NGRmOThmNzdkOWUwZGZmZDUxNjIAc2V0X3JlZ2lvbjIAPE1vZHVsZT4ASW5w
-dXRJRABtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlwZUZy
-b21IYW5kbGUASW5wdXROYW1lAE9uZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5QaXBlbGluZQBU
-eXBlAGdldF9DdWx0dXJlAHNldF9DdWx0dXJlAHJlc291cmNlQ3VsdHVyZQBBcHBsaWNhdGlvblNl
-dHRpbmdzQmFzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0
-ZQBEZWJ1Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9y
-QnJvd3NhYmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1h
-cmtBdHRyaWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlv
-bkF0dHJpYnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhh
-dGlvbnNBdHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0
-QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5
-Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBQcmVFeGVjdXRl
-AFBvc3RFeGVjdXRlAHZhbHVlAFN5c3RlbS5SdW50aW1lLlZlcnNpb25pbmcAR2V0U3RyaW5nAEdl
-dERlY2ltYWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFNDXzViMjAwZDA4YWM2NTRkZjk4Zjc3ZDll
-MGRmZmQ1MTYyLmRsbABzZXRfcmVnaW9uMl9Jc051bGwAZ2V0X3JlZ2lvbl9Jc051bGwAZ2V0X2Nv
-ZGlnb19Jc051bGwAZ2V0X3RlcnJpdG9yaW9fSXNOdWxsAFNldE51bGwAc2V0X0l0ZW0AU3lzdGVt
-AHJlc291cmNlTWFuAFNjcmlwdE1haW4AZ2V0X3JlZ2lvbgBTeXN0ZW0uQ29uZmlndXJhdGlvbgBT
-eXN0ZW0uR2xvYmFsaXphdGlvbgBTeXN0ZW0uUmVmbGVjdGlvbgBJbnZhbGlkT3BlcmF0aW9uRXhj
-ZXB0aW9uAFN0cmluZ0NvbXBhcmlzb24AQ3VsdHVyZUluZm8AZ2V0X2NvZGlnbwBnZXRfdGVycml0
-b3JpbwBPdXRwdXROYW1lTWFwAE91dHB1dE1hcABFbnRyYWRhMEJ1ZmZlcgBQaXBlbGluZUJ1ZmZl
-cgBTY3JpcHRCdWZmZXIAZ2V0X1Jlc291cmNlTWFuYWdlcgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRp
-YWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJlc291cmNl
-cwBTQ181YjIwMGQwOGFjNjU0ZGY5OGY3N2Q5ZTBkZmZkNTE2Mi5Qcm9wZXJ0aWVzLlJlc291cmNl
-cy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU0NfNWIyMDBkMDhhYzY1NGRmOThmNzdkOWUwZGZm
-ZDUxNjIuUHJvcGVydGllcwBWYXJpYWJsZXMAQnVmZmVyQ29sdW1uSW5kZXhlcwBHZXRDb2x1bW5J
-bmRleGVzAFNldHRpbmdzAEVxdWFscwBDb25uZWN0aW9ucwBPYmplY3QARW5kT2ZSb3dzZXQAZ2V0
-X0RlZmF1bHQAVXNlckNvbXBvbmVudABQYXJlbnRDb21wb25lbnQAU2NyaXB0Q29tcG9uZW50AE1p
-Y3Jvc29mdC5TcWxTZXJ2ZXIuVHhTY3JpcHQATWljcm9zb2Z0LlNxbFNlcnZlci5QaXBlbGluZUhv
-c3QARW50cmFkYTBfUHJvY2Vzc0lucHV0AEVudHJhZGEwX1Byb2Nlc3NJbnB1dFJvdwBOZXh0Um93
-AGdldF9Bc3NlbWJseQBvcF9FcXVhbGl0eQAAAA9PAHIAaQBlAG4AdABlAAATTwBjAGMAaQBkAGUA
-bgB0AGUAAAtOAG8AcgB0AGUAAAdTAHUAcgAAgL1MAGEAIABwAHIAbwBwAGkAZQBkAGEAZAAgAEkA
-cwBOAHUAbABsACAAbgBvACAAcAB1AGUAZABlACAAZQBzAHQAYQBiAGwAZQBjAGUAcgBzAGUAIABl
-AG4AIABGAGEAbABzAGUALgAgAEUAbgAgAHMAdQAgAGwAdQBnAGEAcgAsACAAYQBzAGkAZwBuAGUA
-IAB1AG4AIAB2AGEAbABvAHIAIABhACAAbABhACAAYwBvAGwAdQBtAG4AYQAuAAATRQBuAHQAcgBh
-AGQAYQAgADAAAHFTAEMAXwA1AGIAMgAwADAAZAAwADgAYQBjADYANQA0AGQAZgA5ADgAZgA3ADcA
-ZAA5AGUAMABkAGYAZgBkADUAMQA2ADIALgBQAHIAbwBwAGUAcgB0AGkAZQBzAC4AUgBlAHMAbwB1
-AHIAYwBlAHMAAAAA8taoSi4HVk+WkBKK4Id1OwAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERXQQH
-ARE5AwYROQcAAgIRORE5CSADARJBHQgSRQMGEkEDBh0IBCABDggEIAECCAUgARE5CAUgAgEIHAMg
-AAIGIAICDhF1BSABHQgIBgABEnkRfQUgABKAgQcgAgEOEoCBCLd6XFYZNOCJCImEXc2AgMyRAwYS
-FAMGEhgDBhJJAwYSVQMGElkDBhIgBSABARIMAyAADgQgABE5BCABAQIJIAQBCA4SQRJFBSABARJJ
-BAAAElUEAAASWQUAAQESWQQAABIgAwAAAQMoAA4DKAACBCgAETkECAASVQQIABJZBAgAEiAIAQAI
-AAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAAKAEAI1NDXzViMjAw
-ZDA4YWM2NTRkZjk4Zjc3ZDllMGRmZmQ1MTYyAAAFAQAAAAAWAQARQ29weXJpZ2h0IEAgIDIwMjAA
-AEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3JrRGlzcGxheU5hbWUS
-Lk5FVCBGcmFtZXdvcmsgNC43BAEAAAAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2Vz
-LlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRy
-YWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50
-aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAHQzAAAAAAAAAAAAAI4zAAAAIAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAACAMwAAAAAAAAAAAAAAAF9Db3JEbGxNYWluAG1zY29yZWUuZGxs
-AAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+BixkBnIBAABwKBIAAAotKAZyBQAAcCgSAAAKLScGcgkAAHAoEgAACi0mBnINAABwKBIAAAotJSoD
+chEAAHBvDAAABioDciEAAHBvDAAABioDcjUAAHBvDAAABioDckEAAHBvDAAABioeAigQAAAGKioC
+AwQFKBMAAAoqUgJ7FAAACgJ7FQAAChaUbxYAAAoqIgIWKBcAAAoqUgJ7FAAACgJ7FQAACheUbxYA
+AAoqIgIXKBcAAAoqUgJ7FAAACgJ7FQAAChiUbxYAAAoqIgIYKBcAAAoqJgIZAygYAAAKKloDLAgC
+GSgZAAAKKnJJAABwcxoAAAp6HgIoGwAACioeAigcAAAKKn4CKB0AAAoCAnMUAAAGfQEAAAQCAnMV
+AAAGfQIAAAQqkgRyCAEAcBpvHgAACiwVAgUCAygfAAAKDgRzBQAABm8SAAAGKkorBwIDbxMAAAYD
+bw4AAAYt8SoGKjoCKCAAAAoCA30DAAAEKjoCKCAAAAoCA30EAAAEKh4CKCAAAAoqrn4FAAAELR5y
+HAEAcNAHAAACKCEAAApvIgAACnMjAAAKgAUAAAR+BQAABCoafgYAAAQqHgKABgAABCoafgcAAAQq
+HgIoJAAACioucxsAAAaABwAABCoAQlNKQgEAAQAAAAAADAAAAHY0LjAuMzAzMTkAAAAABQBsAAAA
+2AUAACN+AABEBgAAiAYAACNTdHJpbmdzAAAAAMwMAACQAQAAI1VTAFwOAAAQAAAAI0dVSUQAAABs
+DgAArAEAACNCbG9iAAAAAAAAAAIAAAFXFaIBCQEAAAD6ATMAFgAAAQAAAB8AAAAIAAAABwAAABwA
+AAAPAAAAJAAAABAAAAABAAAAAwAAAAsAAAAMAAAAAQAAAAQAAAABAAAAAAAUAwEAAAAAAAYACwKu
+BAYAnwKuBAYAVwGbBA8AIgUAAAYAhAHuAwYA7gHuAwYAzwHuAwYAhgLuAwYAKwLuAwYARALuAwYA
+mwHuAwYAtgHaAgoAXwKkAAoAbQSkAA4AXgSkAAoANwSkAAoA6AWkAAYAqwWbAwYAOgGbBAYAfgTO
+BAYAKwTZAxIACgH+AhIAawH+AhIA8gDEAwYAHwGuBAYA9wKbAwYAAASbAwYAGgSbAwYAxQCbAwYA
+dgCbAwYAcQbuAwAAAABMAAAAAAABAAEAAQAQAK4DAAAQAAEAAQABABAATwQAADkAAQAFAAEAEADK
+BQAARQABABAAAQAQAJ8FAABJAAMAFAABABAAYAUAAEkABAAVAAAAEADVBDEFSQAFABYAAAEQAI8F
+MQVhAAcAGgAGAJ8FfQAGAGAFgQABANgFhQABANgFhQARAKIDiQARAOIAjQARAGYAkQBQIAAAAADG
+AL0CBgABAFggAAAAAMYAyAIGAAEAYCAAAAAAxgBMBpUAAQDbIAAAAACGGI4EBgACAOMgAAAAAIYY
+jgQlAAIA7iAAAAAAhggBAJsABQADIQAAAACGCDwDRwAFAAwhAAAAAIYIDgCbAAUAISEAAAAAhghQ
+A0cABQAqIQAAAACGCBsAmwAFAD8hAAAAAIYIZANHAAUASCEAAAAAhgi5AxAABQBSIQAAAACGCHgD
+nwAGAGkhAAAAAIYAZQZHAAcAcSEAAAAAhgCyBUcABwB5IQAAAACGGI4EBgAHAJkhAAAAAMYAPwak
+AAcAviEAAAAAxgE2BpUACwDRIQAAAADGAUwGlQAMANMhAAAAAIYYjgSuAA0A4iEAAAAAhhiOBK4A
+DgDxIQAAAACDGI4EBgAPAPkhAAAAAJMIegS0AA8AJSIAAAAAkwjKALkADwAsIgAAAACTCNYAvgAP
+ADQiAAAAAJYIvgXEABAAOyIAAAAAhhiOBAYAEABDIgAAAACRGJQEyQAQAAAAAQBpBgAAAQBzBAAA
+AgBqBQAAAwBFBAAAAQDUAgAAAQDUAgAAAQBVAAAAAgCaAAAAAwBzBAAABABFBAAAAQBzBAAAAQBp
+BgAAAQDuBQAAAQDuBQAAAQDUAgkAjgQBABEAjgQGABkAjgQKACkAjgQQADEAjgQQADkAjgQQAEEA
+jgQQAEkAjgQQAFEAjgQQAFkAjgQQAGEAjgQQAGkAjgQGAJkAjgQGALkAjgQVAMkAjgQGAIkAvQIG
+AIkAyAIGANEAegYfAHEAjgQlAHEAcwQvAHEAagUzAHkA9AI3AHEAgwM8AHEAkgNBAHEAigMBANkA
+jgQQAHEAZQZHAHEAsgVHAIkAjgQGANEAmAVLAIkAfgVSAJEAjgQGAOkAiABYAOkAbQZfAKEAjgRk
+AMEAjgQGAC4ACwDkAC4AEwDtAC4AGwAMAS4AIwAVAS4AKwA+AS4AMwA+AS4AOwA+AS4AQwAVAS4A
+SwBEAS4AUwA+AS4AWwBbAUMAYwClAeEAewClAeMAawClASkBcwAMAUkBcwAMARsAAwABAAcACQAI
+AAsAAAAFAM0AAABAA9EAAAASAM0AAABUA9EAAAAfAM0AAABoA9EAAAC9A80AAAB8A9EAAAB+BNUA
+AADqANoAAADCBd8AAgAGAAMAAgAHAAUAAgAIAAcAAgAJAAkAAgAKAAsAAgALAA0AAQAMAA8AAQAN
+ABEAAgAXABMAAgAYABUAAQAZABUAAgAaABcABIAAAAEAAAAAAAAAAAAAAAAAKAAAAAQAAAAAAAAA
+AAAAAGsAXQAAAAAADwAAAAAAAAAAAAAAdAD4BQAAAAAPAAAAAAAAAAAAAAB0ABUGAAAAAAQAAAAA
+AAAAAAAAAGsAmwMAAAAAAAAAAAEAAADfBAAAAAAAZ2V0X0NvbHVtbmEwAGdldF9Db2x1bW5hMQBn
+ZXRfQ29sdW1uYTIAU0NfNWZiN2JjY2FmNGU1NGM1M2IyM2NkN2YwMTg0NjU5MTYAPE1vZHVsZT4A
+SW5wdXRJRABtc2NvcmxpYgBkZWZhdWx0SW5zdGFuY2UAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlw
+ZUZyb21IYW5kbGUASW5wdXROYW1lAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlBpcGVsaW5lAFR5
+cGUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0dXJlAEFwcGxpY2F0aW9uU2V0
+dGluZ3NCYXNlAEVkaXRvckJyb3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRl
+AERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JC
+cm93c2FibGVBdHRyaWJ1dGUAQXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFy
+a0F0dHJpYnV0ZQBUYXJnZXRGcmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9u
+QXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0
+aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRB
+dHRyaWJ1dGUAU1NJU1NjcmlwdENvbXBvbmVudEVudHJ5UG9pbnRBdHRyaWJ1dGUAQXNzZW1ibHlD
+b21wYW55QXR0cmlidXRlAFJ1bnRpbWVDb21wYXRpYmlsaXR5QXR0cmlidXRlAFByZUV4ZWN1dGUA
+UG9zdEV4ZWN1dGUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVyc2lvbmluZwBHZXRTdHJpbmcAU3lz
+dGVtLkNvbXBvbmVudE1vZGVsAFNDXzVmYjdiY2NhZjRlNTRjNTNiMjNjZDdmMDE4NDY1OTE2LmRs
+bABnZXRfQ29sdW1uYTBfSXNOdWxsAGdldF9Db2x1bW5hMV9Jc051bGwAZ2V0X0NvbHVtbmEyX0lz
+TnVsbABzZXRfUmVnaW9uX0lzTnVsbABTZXROdWxsAHNldF9JdGVtAFN5c3RlbQByZXNvdXJjZU1h
+bgBTY3JpcHRNYWluAHNldF9SZWdpb24AU3lzdGVtLkNvbmZpZ3VyYXRpb24AU3lzdGVtLkdsb2Jh
+bGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ASW52YWxpZE9wZXJhdGlvbkV4Y2VwdGlvbgBTdHJp
+bmdDb21wYXJpc29uAEN1bHR1cmVJbmZvAE91dHB1dE5hbWVNYXAAT3V0cHV0TWFwAEVudHJhZGEw
+QnVmZmVyAFBpcGVsaW5lQnVmZmVyAFNjcmlwdEJ1ZmZlcgBnZXRfUmVzb3VyY2VNYW5hZ2VyAC5j
+dG9yAC5jY3RvcgBTeXN0ZW0uRGlhZ25vc3RpY3MAU3lzdGVtLlJ1bnRpbWUuQ29tcGlsZXJTZXJ2
+aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNDXzVmYjdiY2NhZjRlNTRjNTNiMjNjZDdmMDE4NDY1OTE2
+LlByb3BlcnRpZXMuUmVzb3VyY2VzLnJlc291cmNlcwBEZWJ1Z2dpbmdNb2RlcwBTQ181ZmI3YmNj
+YWY0ZTU0YzUzYjIzY2Q3ZjAxODQ2NTkxNi5Qcm9wZXJ0aWVzAFZhcmlhYmxlcwBCdWZmZXJDb2x1
+bW5JbmRleGVzAEdldENvbHVtbkluZGV4ZXMAU2V0dGluZ3MARXF1YWxzAENvbm5lY3Rpb25zAE9i
+amVjdABFbmRPZlJvd3NldABnZXRfRGVmYXVsdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVu
+dABTY3JpcHRDb21wb25lbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQu
+U3FsU2VydmVyLlBpcGVsaW5lSG9zdABFbnRyYWRhMF9Qcm9jZXNzSW5wdXQARW50cmFkYTBfUHJv
+Y2Vzc0lucHV0Um93AE5leHRSb3cAZ2V0X0Fzc2VtYmx5AG9wX0VxdWFsaXR5AAAAAAMxAAADMgAA
+AzMAAAM0AAAPTwByAGkAZQBuAHQAZQAAE08AYwBjAGkAZABlAG4AdABlAAALTgBvAHIAdABlAAAH
+UwB1AHIAAIC9TABhACAAcAByAG8AcABpAGUAZABhAGQAIABJAHMATgB1AGwAbAAgAG4AbwAgAHAA
+dQBlAGQAZQAgAGUAcwB0AGEAYgBsAGUAYwBlAHIAcwBlACAAZQBuACAARgBhAGwAcwBlAC4AIABF
+AG4AIABzAHUAIABsAHUAZwBhAHIALAAgAGEAcwBpAGcAbgBlACAAdQBuACAAdgBhAGwAbwByACAA
+YQAgAGwAYQAgAGMAbwBsAHUAbQBuAGEALgAAE0UAbgB0AHIAYQBkAGEAIAAwAABxUwBDAF8ANQBm
+AGIANwBiAGMAYwBhAGYANABlADUANABjADUAMwBiADIAMwBjAGQANwBmADAAMQA4ADQANgA1ADkA
+MQA2AC4AUAByAG8AcABlAHIAdABpAGUAcwAuAFIAZQBzAG8AdQByAGMAZQBzAAAAAKHn9NFUMkBF
+pjIBEr63itwABCABAQgDIAABBSABARERBCABAQ4FIAEBEVkDBwEOBQACAg4OCSADARI9HQgSQQMG
+Ej0DBh0IBCABDggEIAECCAUgAgEIHAMgAAIGIAICDhFxBSABHQgIBgABEnUReQQgABJ9BiACAQ4S
+fQi3elxWGTTgiQiJhF3NgIDMkQMGEhQDBhIYAwYSRQMGElEDBhJVAwYSIAUgAQESDAMgAA4EIAEB
+AgkgBAEIDhI9EkEFIAEBEkUEAAASUQQAABJVBQABARJVBAAAEiADAAABAygADgMoAAIECAASUQQI
+ABJVBAgAEiAIAQAIAAAAAAAeAQABAFQCFldyYXBOb25FeGNlcHRpb25UaHJvd3MBCAEAAgAAAAAA
+KAEAI1NDXzVmYjdiY2NhZjRlNTRjNTNiMjNjZDdmMDE4NDY1OTE2AAAFAQAAAAAWAQARQ29weXJp
+Z2h0IEAgIDIwMjAAAEkBABouTkVURnJhbWV3b3JrLFZlcnNpb249djQuNwEAVA4URnJhbWV3b3Jr
+RGlzcGxheU5hbWUSLk5FVCBGcmFtZXdvcmsgNC43BAEAAAAAALQAAADOyu++AQAAAJEAAABsU3lz
+dGVtLlJlc291cmNlcy5SZXNvdXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwg
+Q3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5S
+ZXNvdXJjZXMuUnVudGltZVJlc291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAABIMwAAAAAA
+AAAAAABiMwAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVDMAAAAAAAAAAAAAAABfQ29yRGxsTWFp
+bgBtc2NvcmVlLmRsbAAAAAAA/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
 SAAAAFhAAADsAwAAAAAAAAAAAADsAzQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
@@ -1378,17 +1892,17 @@ AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
 AAAAAAAAALAETAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAKAMAAAEAMAAwADAA
 MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
 AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
-AABTAEMAXwA1AGIAMgAwADAAZAAwADgAYQBjADYANQA0AGQAZgA5ADgAZgA3ADcAZAA5AGUAMABk
-AGYAZgBkADUAMQA2ADIAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
-MAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADUAYgAyADAAMABk
-ADAAOABhAGMANgA1ADQAZABmADkAOABmADcANwBkADkAZQAwAGQAZgBmAGQANQAxADYAMgAuAGQA
+AABTAEMAXwA1AGYAYgA3AGIAYwBjAGEAZgA0AGUANQA0AGMANQAzAGIAMgAzAGMAZAA3AGYAMAAx
+ADgANAA2ADUAOQAxADYAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
+MAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAQwBfADUAZgBiADcAYgBj
+AGMAYQBmADQAZQA1ADQAYwA1ADMAYgAyADMAYwBkADcAZgAwADEAOAA0ADYANQA5ADEANgAuAGQA
 bABsAAAASAASAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAAeQByAGkAZwBo
 AHQAIABAACAAIAAyADAAMgAwAAAAKgABAAEATABlAGcAYQBsAFQAcgBhAGQAZQBtAGEAcgBrAHMA
-AAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8ANQBi
-ADIAMAAwAGQAMAA4AGEAYwA2ADUANABkAGYAOQA4AGYANwA3AGQAOQBlADAAZABmAGYAZAA1ADEA
-NgAyAC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADUAYgAy
-ADAAMABkADAAOABhAGMANgA1ADQAZABmADkAOABmADcANwBkADkAZQAwAGQAZgBmAGQANQAxADYA
-MgAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4
+AAAAAAAAAAB4ACgAAQBPAHIAaQBnAGkAbgBhAGwARgBpAGwAZQBuAGEAbQBlAAAAUwBDAF8ANQBm
+AGIANwBiAGMAYwBhAGYANABlADUANABjADUAMwBiADIAMwBjAGQANwBmADAAMQA4ADQANgA1ADkA
+MQA2AC4AZABsAGwAAABoACQAAQBQAHIAbwBkAHUAYwB0AE4AYQBtAGUAAAAAAFMAQwBfADUAZgBi
+ADcAYgBjAGMAYQBmADQAZQA1ADQAYwA1ADMAYgAyADMAYwBkADcAZgAwADEAOAA0ADYANQA5ADEA
+NgAAADQACAABAFAAcgBvAGQAdQBjAHQAVgBlAHIAcwBpAG8AbgAAADEALgAwAC4AMAAuADAAAAA4
 AAgAAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgAwAC4AMAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1397,7 +1911,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAoDMAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAdDMAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1413,7 +1927,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   dataType="System.String"
                   description="Especifica el nombre del proyecto de Microsoft Visual Studio Tools para Aplicaciones. Los nombres de proyecto deben ser únicos en el paquete."
                   name="VSTAProjectName"
-                  typeConverter="NOTBROWSABLE">SC_5b200d08ac654df98f77d9e0dffd5162</property>
+                  typeConverter="NOTBROWSABLE">SC_5fb7bccaf4e54c53b23cd7f018465916</property>
                 <property
                   dataType="System.String"
                   description="Especifica el lenguaje de programación que utiliza el script."
@@ -1442,7 +1956,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   dataType="System.String"
                   description="Suma de comprobación para comparar los metadatos del componente con los códigos compilados."
                   name="MetadataChecksum140"
-                  typeConverter="NOTBROWSABLE">D7</property>
+                  typeConverter="NOTBROWSABLE">99</property>
                 <property
                   dataType="System.String"
                   name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
@@ -1454,25 +1968,26 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   name="Entrada 0">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0].Columns[codigo]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="15"
-                      cachedName="codigo"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[codigo]" />
-                    <inputColumn
-                      refId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0].Columns[territorio]"
+                      refId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0].Columns[Columna 0]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="territorio"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[territorio]" />
+                      cachedName="Columna 0"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 0]" />
                     <inputColumn
-                      refId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0].Columns[region]"
-                      cachedDataType="numeric"
-                      cachedName="region"
-                      cachedPrecision="18"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]" />
+                      refId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0].Columns[Columna 1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Columna 1"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 1]" />
+                    <inputColumn
+                      refId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0].Columns[Columna 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Columna 2"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 2]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1484,11 +1999,12 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   synchronousInputId="Package\Copiar Territorios\Componente de script.Inputs[Entrada 0]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Copiar Territorios\Componente de script.Outputs[Salida 0].Columns[region2]"
-                      dataType="wstr"
+                      refId="Package\Copiar Territorios\Componente de script.Outputs[Salida 0].Columns[Region]"
+                      codePage="1252"
+                      dataType="str"
                       length="50"
-                      lineageId="Package\Copiar Territorios\Componente de script.Outputs[Salida 0].Columns[region2]"
-                      name="region2" />
+                      lineageId="Package\Copiar Territorios\Componente de script.Outputs[Salida 0].Columns[Region]"
+                      name="Region" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -1516,8 +2032,8 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
               <connections>
                 <connection
                   refId="Package\Copiar Territorios\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="{71779164-B76A-41E9-85F5-3B11B21848E5}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[DatosTerritorios]"
+                  connectionManagerID="Package.ConnectionManagers[Datos de Territorios]"
+                  connectionManagerRefId="Package.ConnectionManagers[Datos de Territorios]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -1526,37 +2042,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[codigo]"
+                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 0]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[codigo]"
-                      length="15"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[codigo]"
-                      name="codigo"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[territorio]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[territorio]"
+                      externalMetadataColumnId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Columna 0]"
                       length="50"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[territorio]"
-                      name="territorio"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 0]"
+                      name="Columna 0"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1570,14 +2064,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]"
-                      dataType="numeric"
+                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 1]"
+                      codePage="1252"
+                      dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[region]"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]"
-                      name="region"
-                      precision="18"
+                      externalMetadataColumnId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Columna 1]"
+                      length="50"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 1]"
+                      name="Columna 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Columna 2]"
+                      length="50"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 2]"
+                      name="Columna 2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -1594,22 +2111,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[codigo]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="codigo" />
-                    <externalMetadataColumn
-                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[territorio]"
+                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Columna 0]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="territorio" />
+                      name="Columna 0" />
                     <externalMetadataColumn
-                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[region]"
-                      dataType="numeric"
-                      name="region"
-                      precision="18" />
+                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Columna 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Columna 1" />
+                    <externalMetadataColumn
+                      refId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Columna 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Columna 2" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1657,7 +2175,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[DatosTerritorios]</property>
+                  name="OpenRowset">[DatosRegiones]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1714,60 +2232,64 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA]]></arrayElement>
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[codigo]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="15"
-                      cachedName="codigo"
-                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codigo]"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[codigo]" />
-                    <inputColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[territorio]"
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Columna 0]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
-                      cachedName="territorio"
-                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[territorio]"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[territorio]" />
+                      cachedName="Columna 0"
+                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Columna 0]"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 0]" />
                     <inputColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[region]"
-                      cachedDataType="numeric"
-                      cachedName="region"
-                      cachedPrecision="18"
-                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
-                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[region]" />
-                    <inputColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[region2]"
-                      cachedDataType="wstr"
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Columna 1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
                       cachedLength="50"
-                      cachedName="region2"
-                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region2]"
-                      lineageId="Package\Copiar Territorios\Componente de script.Outputs[Salida 0].Columns[region2]" />
+                      cachedName="Columna 1"
+                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Columna 1]"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 1]" />
+                    <inputColumn
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Columna 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Columna 2"
+                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Columna 2]"
+                      lineageId="Package\Copiar Territorios\Flat File Source.Outputs[Flat File Source Output].Columns[Columna 2]" />
+                    <inputColumn
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      lineageId="Package\Copiar Territorios\Componente de script.Outputs[Salida 0].Columns[Region]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[codigo]"
-                      codePage="1252"
-                      dataType="str"
-                      length="15"
-                      name="codigo" />
-                    <externalMetadataColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[territorio]"
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Columna 0]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      name="territorio" />
+                      name="Columna 0" />
                     <externalMetadataColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
-                      dataType="numeric"
-                      name="region"
-                      precision="18" />
-                    <externalMetadataColumn
-                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[region2]"
-                      dataType="wstr"
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Columna 1]"
+                      codePage="1252"
+                      dataType="str"
                       length="50"
-                      name="region2" />
+                      name="Columna 1" />
+                    <externalMetadataColumn
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Columna 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Columna 2" />
+                    <externalMetadataColumn
+                      refId="Package\Copiar Territorios\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Region" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2277,7 +2799,7 @@ on o.OrderID = d.OrderID;</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9DF0BBEA-5B63-473F-AE71-14F55B949628}"
-          SQLTask:SqlStatementSource="delete from dbo.DatosProductos;&#xA;delete from dbo.DatosVentas;&#xA;go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="delete from dbo.DatosProductos;&#xA;delete from dbo.DatosVentas;&#xA;delete from dbo.DatosTerritorios;&#xA;truncate table dbo.DatosRegiones;&#xA;truncate table dbo.DatosDespacho;&#xA;go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2298,6 +2820,22 @@ on o.OrderID = d.OrderID;</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 1"
       DTS:To="Package\Copiar Ventas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{DA76FB1A-F85B-4634-9068-0C0B953EFD74}"
+      DTS:From="Package\Limpia Tablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\Copiar Territorios" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{53339D7A-A2E4-4884-A303-78A92893877B}"
+      DTS:From="Package\Limpia Tablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\Archivos de Despacho" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -2310,19 +2848,15 @@ on o.OrderID = d.OrderID;</property>
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="159,42"
           Id="Package\Copiar Productos"
           TopLeft="70.727272727273,221.909090909091" />
         <NodeLayout
-          Size="160,42"
-          Id="Package\Copiar Territorios"
-          TopLeft="528,230" />
-        <NodeLayout
           Size="144,42"
           Id="Package\Copiar Ventas"
-          TopLeft="317,227" />
+          TopLeft="165,295" />
         <NodeLayout
           Size="143,42"
           Id="Package\Limpia Tablas"
@@ -2363,18 +2897,113 @@ on o.OrderID = d.OrderID;</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 1]"
-          TopLeft="391,88">
+          TopLeft="390.5,88">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,139"
+              EndConnector="-153.5,207"
               Start="0,0"
-              End="0,131.5">
+              End="-153.5,199.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,131.5" />
+                    End="0,99.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,99.5"
+                    Point2="0,103.5"
+                    Point3="-4,103.5" />
+                  <mssgle:LineSegment
+                    End="-149.5,103.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-149.5,103.5"
+                    Point2="-153.5,103.5"
+                    Point3="-153.5,107.5" />
+                  <mssgle:LineSegment
+                    End="-153.5,199.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,42"
+          Id="Package\Copiar Territorios"
+          TopLeft="391,231" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="407.25,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.75,143"
+              Start="0,0"
+              End="63.75,135.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.4118993135011" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.4118993135011"
+                    Point2="0,49.4118993135011"
+                    Point3="4,49.4118993135011" />
+                  <mssgle:LineSegment
+                    End="59.75,49.4118993135011" />
+                  <mssgle:CubicBezierSegment
+                    Point1="59.75,49.4118993135011"
+                    Point2="63.75,49.4118993135011"
+                    Point3="63.75,53.4118993135011" />
+                  <mssgle:LineSegment
+                    End="63.75,135.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Archivos de Despacho\Data Flow Task"
+          TopLeft="59,37" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="269,144"
+          Size="269,187"
+          Id="Package\Archivos de Despacho"
+          TopLeft="613,193" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="431,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="316.5,105"
+              Start="0,0"
+              End="316.5,97.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.7560975609756" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.7560975609756"
+                    Point2="0,31.7560975609756"
+                    Point3="4,31.7560975609756" />
+                  <mssgle:LineSegment
+                    End="312.5,31.7560975609756" />
+                  <mssgle:CubicBezierSegment
+                    Point1="312.5,31.7560975609756"
+                    Point2="316.5,31.7560975609756"
+                    Point3="316.5,35.7560975609756" />
+                  <mssgle:LineSegment
+                    End="316.5,97.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2390,7 +3019,7 @@ on o.OrderID = d.OrderID;</property>
     design-time-name="Package\Copiar Productos">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\Copiar Productos\OLE DB Source"
@@ -2418,7 +3047,9 @@ on o.OrderID = d.OrderID;</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2451,6 +3082,67 @@ on o.OrderID = d.OrderID;</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
+    design-time-name="Package\Copiar Ventas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Copiar Ventas\OLE DB Destination"
+          TopLeft="348,267" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Copiar Ventas\OLE DB Source"
+          TopLeft="351,66" />
+        <EdgeLayout
+          Id="Package\Copiar Ventas.Paths[OLE DB Source Output]"
+          TopLeft="429.75,108">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,159"
+              Start="0,0"
+              End="0,151.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,151.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copiar Ventas\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Copiar Ventas\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Copiar Territorios">
     <LayoutInfo>
       <GraphLayout
@@ -2458,41 +3150,25 @@ on o.OrderID = d.OrderID;</property>
         <NodeLayout
           Size="151,42"
           Id="Package\Copiar Territorios\Flat File Source"
-          TopLeft="291,54" />
+          TopLeft="359,49" />
         <NodeLayout
           Size="182,42"
           Id="Package\Copiar Territorios\Componente de script"
-          TopLeft="323,170" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Copiar Territorios\OLE DB Destination"
-          TopLeft="273,309" />
+          TopLeft="349,195" />
         <EdgeLayout
-          Id="Package\Copiar Territorios.Paths[Salida 0]"
-          TopLeft="414,212">
+          Id="Package\Copiar Territorios.Paths[Flat File Source Output]"
+          TopLeft="437.25,91">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-55.5,97"
+              EndConnector="0,104"
               Start="0,0"
-              End="-55.5,89.5">
+              End="0,96.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,44.5"
-                    Point2="0,48.5"
-                    Point3="-4,48.5" />
-                  <mssgle:LineSegment
-                    End="-51.5,48.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-51.5,48.5"
-                    Point2="-55.5,48.5"
-                    Point3="-55.5,52.5" />
-                  <mssgle:LineSegment
-                    End="-55.5,89.5" />
+                    End="0,96.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2501,32 +3177,24 @@ on o.OrderID = d.OrderID;</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Copiar Territorios\OLE DB Destination"
+          TopLeft="349,341" />
         <EdgeLayout
-          Id="Package\Copiar Territorios.Paths[Flat File Source Output]"
-          TopLeft="366.5,96">
+          Id="Package\Copiar Territorios.Paths[Salida 0]"
+          TopLeft="437.25,237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="47.5,74"
+              EndConnector="0,104"
               Start="0,0"
-              End="47.5,66.5">
+              End="0,96.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33"
-                    Point2="0,37"
-                    Point3="4,37" />
-                  <mssgle:LineSegment
-                    End="43.5,37" />
-                  <mssgle:CubicBezierSegment
-                    Point1="43.5,37"
-                    Point2="47.5,37"
-                    Point3="47.5,41" />
-                  <mssgle:LineSegment
-                    End="47.5,66.5" />
+                    End="0,96.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2552,32 +3220,44 @@ on o.OrderID = d.OrderID;</property>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Copiar Ventas">
+    design-time-name="Package\Archivos de Despacho\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
-          Id="Package\Copiar Ventas\OLE DB Source"
-          TopLeft="351,66" />
+          Size="130,42"
+          Id="Package\Archivos de Despacho\Data Flow Task\Despachos"
+          TopLeft="419,98" />
         <NodeLayout
           Size="171,42"
-          Id="Package\Copiar Ventas\OLE DB Destination"
-          TopLeft="348,267" />
+          Id="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination"
+          TopLeft="413,305" />
         <EdgeLayout
-          Id="Package\Copiar Ventas.Paths[OLE DB Source Output]"
-          TopLeft="429.75,108">
+          Id="Package\Archivos de Despacho\Data Flow Task.Paths[Flat File Source Output]"
+          TopLeft="484,140">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,159"
+              EndConnector="14.5,165"
               Start="0,0"
-              End="0,151.5">
+              End="14.5,157.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,151.5" />
+                    End="0,78.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,78.5"
+                    Point2="0,82.5"
+                    Point3="4,82.5" />
+                  <mssgle:LineSegment
+                    End="10.5,82.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.5,82.5"
+                    Point2="14.5,82.5"
+                    Point3="14.5,86.5" />
+                  <mssgle:LineSegment
+                    End="14.5,157.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2590,7 +3270,7 @@ on o.OrderID = d.OrderID;</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Copiar Ventas\OLE DB Destination">
+    design-time-name="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2599,14 +3279,6 @@ on o.OrderID = d.OrderID;</property>
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Copiar Ventas\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
