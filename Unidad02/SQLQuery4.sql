@@ -51,3 +51,10 @@ go
 
 
 
+select * from [DatosDespacho] ;
+go
+
+
+select * from dbo.DatosClientes;
+go
+
