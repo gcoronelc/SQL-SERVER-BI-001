@@ -14,3 +14,25 @@ Objetivos:
   - Crear una columna Edad, donde se tendrá la edad del empleado.
   - Tabla destino: DatosEmpleado
   - DATEDIFF( "YEAR", [BirthDate], GETDATE() )
+  
+  
+  
+  
+  detalle de venta
+  codigo   precio cantidad subtotal
+  ----------------------------------
+  A01       90      6        540
+  A90      100      5        500
+  A50       70      9        630
+  ---------------------------------
+                            1670.0
+                             300.6
+                            1970.6
+
+Acuerdo del vendedor con el cliente
+Quedamos en 1500.00
+
+
+  
+  
+  

@@ -2,7 +2,7 @@ TRANSFORMACIÓN: AGGREGATE
 -------------------------------------------------------------------
 Tiene funciones agregadas como COUNT, SUM, AVERAGE, MAX y MIN
 Tiene una clausula GROUP BY
-Controla los valores nulos igual que el motor de base de datos.
+Controla los valores nulos igual el motor de base de datos.
 Se puede definir varias salidas.
 
 EJEMPLO
@@ -14,6 +14,7 @@ LLevar las ventas a tres tablas:
 - Ventas03: Resumen de ventas por proveedor y categoría
 
 Consulta a utilizar:
+
 select 
 	o.OrderID, o.CustomerID, 
 	s.SupplierID, s.CompanyName SupplierName,
