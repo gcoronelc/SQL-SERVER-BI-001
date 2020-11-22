@@ -11,11 +11,67 @@
   DTS:LocaleID="10250"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="15"
-  DTS:VersionGUID="{5E7D369C-9EEC-46E4-8364-023EA7DBEED3}">
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{72C3F5CA-D3F7-48F6-852D-91008654838B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Archivo de Clientes]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{C1FED3F5-8CAD-4136-AC00-887CC05E1065}"
+      DTS:ObjectName="Archivo de Clientes">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\GITHUB\SQL-SERVER\SQL-SERVER-BI-001\Unidad02\Lookup\ClientesPeru.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="idCliente"
+              DTS:DTSID="{052AFF99-E5D6-47CA-840F-96223917E3DF}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="NomCliente"
+              DTS:DTSID="{F269F177-10FB-4DAE-9DAA-600FB28C0622}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TelCliente"
+              DTS:DTSID="{45B681BB-749A-412D-B4A0-97B8AC1F0241}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ciudad"
+              DTS:DTSID="{CFD9FC7E-ABE5-457C-94EB-6C8BF1E5EB19}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Datos de Territorios]"
       DTS:CreationName="FLATFILE"
@@ -530,6 +586,548 @@
           DTS:ValueIndex="0"
           DTS:VariableName="User::VarDespacho" />
       </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Carga Clientes"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BDAF1A32-E315-4826-BC12-7BB8C64F8F5C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Carga Clientes"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Carga Clientes\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="10250"
+              name="Flat File Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Clientes\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Archivo de Clientes]"
+                  connectionManagerRefId="Package.ConnectionManagers[Archivo de Clientes]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[idCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[idCliente]"
+                      length="50"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[idCliente]"
+                      name="idCliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[NomCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[NomCliente]"
+                      length="50"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[NomCliente]"
+                      name="NomCliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[TelCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TelCliente]"
+                      length="50"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[TelCliente]"
+                      name="TelCliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Ciudad]"
+                      length="50"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[Ciudad]"
+                      name="Ciudad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[idCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="idCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[NomCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NomCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[TelCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TelCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Ciudad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Clientes\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[ciudades]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[ciudades]) [refTable]
+where [refTable].[idCiudad] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="idCiudad" dataType="DT_STR" length="5" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="descripcion" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[Ciudad]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Clientes\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="{679A1224-BBD1-45AD-9CF8-32A3FA0463B3}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.Northwind.sa]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Clientes\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Clientes\Lookup.Inputs[Lookup Input].Columns[Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ciudad"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[Ciudad]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">idCiudad</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Clientes\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Carga Clientes\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Clientes\Lookup.Outputs[Lookup Match Output].Columns[descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Carga Clientes\Lookup.Outputs[Lookup Match Output].Columns[descripcion]"
+                      name="descripcion"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">descripcion</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Clientes\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Carga Clientes\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Carga Clientes\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Carga Clientes\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Clientes\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Carga Clientes\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DatosClientes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Carga Clientes\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{9DF0BBEA-5B63-473F-AE71-14F55B949628}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[localhost.PRUEBA2_DM.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="idCliente"
+                      externalMetadataColumnId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[idCliente]" />
+                    <inputColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NomCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NomCliente"
+                      externalMetadataColumnId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NomCliente]"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[NomCliente]" />
+                    <inputColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TelCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TelCliente"
+                      externalMetadataColumnId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TelCliente]"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[TelCliente]" />
+                    <inputColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      lineageId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output].Columns[Ciudad]" />
+                    <inputColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[descripcion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="descripcion"
+                      externalMetadataColumnId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[descripcion]"
+                      lineageId="Package\Carga Clientes\Lookup.Outputs[Lookup Match Output].Columns[descripcion]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[idCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="idCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[NomCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NomCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TelCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TelCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[descripcion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="descripcion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Carga Clientes\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Carga Clientes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Carga Clientes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Carga Clientes\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Carga Clientes.Paths[Flat File Source Output]"
+              endId="Package\Carga Clientes\Lookup.Inputs[Lookup Input]"
+              name="Flat File Source Output"
+              startId="Package\Carga Clientes\Flat File Source.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Carga Clientes.Paths[Lookup Match Output]"
+              endId="Package\Carga Clientes\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Carga Clientes\Lookup.Outputs[Lookup Match Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Copiar Productos"
@@ -2799,7 +3397,7 @@ on o.OrderID = d.OrderID;</property>
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{9DF0BBEA-5B63-473F-AE71-14F55B949628}"
-          SQLTask:SqlStatementSource="delete from dbo.DatosProductos;&#xA;delete from dbo.DatosVentas;&#xA;delete from dbo.DatosTerritorios;&#xA;truncate table dbo.DatosRegiones;&#xA;truncate table dbo.DatosDespacho;&#xA;go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="delete from dbo.DatosProductos;&#xA;delete from dbo.DatosVentas;&#xA;delete from dbo.DatosTerritorios;&#xA;truncate table dbo.DatosRegiones;&#xA;truncate table dbo.DatosDespacho;&#xA;truncate table dbo.DatosClientes;&#xA;go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>
@@ -2836,6 +3434,14 @@ on o.OrderID = d.OrderID;</property>
       DTS:LogicalAnd="True"
       DTS:ObjectName="Restricción 3"
       DTS:To="Package\Archivos de Despacho" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{551CD8DC-8FBB-43CA-9A4A-F4CD59A3687B}"
+      DTS:From="Package\Limpia Tablas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 4"
+      DTS:To="Package\Carga Clientes" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
@@ -2932,33 +3538,21 @@ on o.OrderID = d.OrderID;</property>
         <NodeLayout
           Size="160,42"
           Id="Package\Copiar Territorios"
-          TopLeft="391,231" />
+          TopLeft="322,239" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 2]"
-          TopLeft="407.25,88">
+          TopLeft="403,88">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="63.75,143"
+              EndConnector="0,151"
               Start="0,0"
-              End="63.75,135.5">
+              End="0,143.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,45.4118993135011" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,45.4118993135011"
-                    Point2="0,49.4118993135011"
-                    Point3="4,49.4118993135011" />
-                  <mssgle:LineSegment
-                    End="59.75,49.4118993135011" />
-                  <mssgle:CubicBezierSegment
-                    Point1="59.75,49.4118993135011"
-                    Point2="63.75,49.4118993135011"
-                    Point3="63.75,53.4118993135011" />
-                  <mssgle:LineSegment
-                    End="63.75,135.5" />
+                    End="0,143.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2973,37 +3567,75 @@ on o.OrderID = d.OrderID;</property>
           TopLeft="59,37" />
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="269,144"
-          Size="269,187"
+          Size="269,43"
           Id="Package\Archivos de Despacho"
-          TopLeft="613,193" />
+          TopLeft="424,314" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Restricción 3]"
-          TopLeft="431,88">
+          TopLeft="422,88">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="316.5,105"
+              EndConnector="136.5,226"
               Start="0,0"
-              End="316.5,97.5">
+              End="136.5,218.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.7560975609756" />
+                    End="0,64.3512195121951" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,27.7560975609756"
-                    Point2="0,31.7560975609756"
-                    Point3="4,31.7560975609756" />
+                    Point1="0,64.3512195121951"
+                    Point2="0,68.3512195121951"
+                    Point3="4,68.3512195121951" />
                   <mssgle:LineSegment
-                    End="312.5,31.7560975609756" />
+                    End="132.5,68.3512195121951" />
                   <mssgle:CubicBezierSegment
-                    Point1="312.5,31.7560975609756"
-                    Point2="316.5,31.7560975609756"
-                    Point3="316.5,35.7560975609756" />
+                    Point1="132.5,68.3512195121951"
+                    Point2="136.5,68.3512195121951"
+                    Point3="136.5,72.3512195121951" />
                   <mssgle:LineSegment
-                    End="316.5,97.5" />
+                    End="136.5,218.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="146,42"
+          Id="Package\Carga Clientes"
+          TopLeft="715,200" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 4]"
+          TopLeft="435.5,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="352.5,112"
+              Start="0,0"
+              End="352.5,104.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.2857142857143"
+                    Point2="0,30.2857142857143"
+                    Point3="4,30.2857142857143" />
+                  <mssgle:LineSegment
+                    End="348.5,30.2857142857143" />
+                  <mssgle:CubicBezierSegment
+                    Point1="348.5,30.2857142857143"
+                    Point2="352.5,30.2857142857143"
+                    Point3="352.5,34.2857142857143" />
+                  <mssgle:LineSegment
+                    End="352.5,104.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3271,6 +3903,108 @@ on o.OrderID = d.OrderID;</property>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Archivos de Despacho\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Carga Clientes">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Carga Clientes\Lookup"
+          TopLeft="338,172" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Carga Clientes\Flat File Source"
+          TopLeft="320,40" />
+        <EdgeLayout
+          Id="Package\Carga Clientes.Paths[Flat File Source Output]"
+          TopLeft="395,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90"
+              Start="0,0"
+              End="0,82.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,82.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Carga Clientes\OLE DB Destination"
+          TopLeft="315,320" />
+        <EdgeLayout
+          Id="Package\Carga Clientes.Paths[Lookup Match Output]"
+          TopLeft="397.5,214">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,106"
+              Start="0,0"
+              End="0,98.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,98.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,43.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Clientes\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[ciudades]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Carga Clientes\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
