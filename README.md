@@ -11,7 +11,7 @@
 - Dirección: https://goo.gl/maps/PyC3Ek8MXW3bVZoC7
 - Canal Youtube: https://www.youtube.com/channel/UC7c3C0Dtr6HnSpxAAWN643A?sub_confirmation=1
 - Recursos: http://gcoronelc.blogspot.com/p/sql-server.html
-- Grupo de WS: https://chat.whatsapp.com/LqmvtClIBaX9p2eagoSwXY
+- Grupo de WS: https://chat.whatsapp.com/KjPX9dJnQ3G2zWBOhv8d3n
 
 
 ## DATOS DEL DOCENTE
