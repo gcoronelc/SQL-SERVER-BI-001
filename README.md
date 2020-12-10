@@ -1,17 +1,17 @@
-![SQL SERVER ADMINISTRACION](https://raw.githubusercontent.com/gcoronelc/SQL-SERVER-ADM-003/main/img/sql-adm.png)
+![SQL SERVER INTELIGENCIA DE NEGOCIOS](https://raw.githubusercontent.com/gcoronelc/SQL-SERVER-BI-001/main/img/sql4.png)
 
 # DATOS GENERALES
 
 ## DATOS DEL CURSO
 
 - Lugar: CEPS-UNI
-- Horario: DOMINGO DE 16 - 20 Horas
-- Inicio: 29-NOV-2020
+- Horario: DOMINGO DE 12 - 16 Horas
+- Inicio: 08-NOV-2020
 - Duración: 24 Horas
 - Dirección: https://goo.gl/maps/PyC3Ek8MXW3bVZoC7
 - Canal Youtube: https://www.youtube.com/channel/UC7c3C0Dtr6HnSpxAAWN643A?sub_confirmation=1
 - Recursos: http://gcoronelc.blogspot.com/p/sql-server.html
-- Grupo de WS: https://chat.whatsapp.com/GNzpVnmqReQD25KL0663dv
+- Grupo de WS: https://chat.whatsapp.com/LqmvtClIBaX9p2eagoSwXY
 
 
 ## DATOS DEL DOCENTE
